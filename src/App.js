@@ -74,7 +74,7 @@ class App extends Component {
         <Form>
             <FormGroup name='search'>
               <Label for="search">Search: </Label>
-              <Input type="text" name="search" id="search" placeholder="" onChange={this.onSearchChange} />
+              <Input type="text" name="search" id="search" value={this.state.search} placeholder="" onChange={this.onSearchChange} />
             </FormGroup>
           </Form>
           <ul>
