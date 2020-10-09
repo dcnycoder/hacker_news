@@ -45,6 +45,7 @@ class App extends Component {
       list,
       search: ''
     }
+
     this.message = 'HACKER NEWS'
     this.dismissProject = this.dismissProject.bind(this)
     this.onSearchChange = this.onSearchChange.bind(this)
@@ -55,9 +56,10 @@ class App extends Component {
     console.log("Modified state: ", this.state)
   }
   onSearchChange(event) {
-    console.log("This.state.search before: ", this.state.search)
+    let {search} = this.state
+    console.log("This.state.search before: ", search)
     this.setState({search: event.target.value})
-    console.log("This.state.search: ", this.state.search)
+    console.log("This.state.search: ", search)
   }
 
   render() {
