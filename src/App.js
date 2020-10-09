@@ -4,18 +4,37 @@ import logo from './logo.svg';
 import {Form, FormGroup, Label, Input} from 'reactstrap'
 import './App.css';
 
-const projects = [
+// const projects = [
+//   {
+//     id: 0,
+//     name: "Dynamic Dogs",
+//     type: "Pet Store",
+//     technologies: ["react", "redux", "sequelize"]
+//   },
+//   {
+//     id: 1,
+//     name: "Stock Portfolio Manager",
+//     type: "financial app",
+//     technologies: ["react", "redux", "d3js"]
+//   }
+// ]
+
+const list = [
   {
-    id: 0,
-    name: "Dynamic Dogs",
-    type: "Pet Store",
-    technologies: ["react", "redux", "sequelize"]
+    title: "React",
+    url: "http://react.com",
+    author: "Jordan Walke",
+    num_comments: 3,
+    points: 4,
+    objectID: 0,
   },
   {
-    id: 1,
-    name: "Stock Portfolio Manager",
-    type: "financial app",
-    technologies: ["react", "redux", "d3js"]
+    title: "Redux",
+    url: "www.redux.com",
+    author: "Jordan Walke",
+    num_comments: 8,
+    points: 4.7,
+    objectID: 1
   }
 ]
 
@@ -23,7 +42,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      projects,
+      list,
       search: ''
     }
     this.message = 'HACKER NEWS'
@@ -31,8 +50,8 @@ class App extends Component {
     this.onSearchChange = this.onSearchChange.bind(this)
   }
   dismissProject(id) {
-    const filteredProjects = this.state.projects.filter((elem) => elem.id!==id)
-    this.setState({projects: filteredProjects})
+    const filteredList = this.state.list.filter((elem) => elem.id!==id)
+    this.setState({list: filteredList})
     console.log("Modified state: ", this.state)
   }
   onSearchChange(event) {
@@ -58,14 +77,13 @@ class App extends Component {
           </Form>
           <ul>
             {
-              this.state.projects.map((elem) => {
+              this.state.list.filter(elem => elem.title.includes(this.state.search)).map((elem) => {
                 return <li key = {elem.id}>
-                  <div>Name: {elem.name}</div>
-                  <div>Type: {elem.type}</div>
-                  <div>Technologies Used: {
-                      elem.technologies.map(tech => {return tech + ", "})
-                    }
-                  </div>
+                  <div>Title: {elem.title}</div>
+                  <div>URL: {elem.url}</div>
+                  <div>Author: {elem.author}</div>
+                  <div>Comments: {elem.num_comments}</div>
+                  <div>Points: {elem.points}</div>
                   <button
                     onClick={() => this.dismissProject(elem.id)}
                     type='button'>DISMISS</button>
@@ -88,3 +106,4 @@ class App extends Component {
 }
 
 export default App;
+
