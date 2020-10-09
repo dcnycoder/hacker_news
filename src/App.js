@@ -49,6 +49,7 @@ class App extends Component {
           <p>{this.message}</p>
         </header>
         <div>
+        <p/>
         <Form>
             <FormGroup name='search'>
               <Label for="search">Search: </Label>
