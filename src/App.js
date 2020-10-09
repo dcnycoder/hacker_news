@@ -50,7 +50,7 @@ class App extends Component {
     this.onSearchChange = this.onSearchChange.bind(this)
   }
   dismissProject(id) {
-    const filteredList = this.state.list.filter((elem) => elem.id!==id)
+    const filteredList = this.state.list.filter((elem) => elem.objectID!==id)
     this.setState({list: filteredList})
     console.log("Modified state: ", this.state)
   }
@@ -78,25 +78,19 @@ class App extends Component {
           <ul>
             {
               this.state.list.filter(elem => elem.title.includes(this.state.search)).map((elem) => {
-                return <li key = {elem.id}>
+                return <li key = {elem.objectID}>
                   <div>Title: {elem.title}</div>
                   <div>URL: {elem.url}</div>
                   <div>Author: {elem.author}</div>
                   <div>Comments: {elem.num_comments}</div>
                   <div>Points: {elem.points}</div>
                   <button
-                    onClick={() => this.dismissProject(elem.id)}
+                    onClick={() => this.dismissProject(elem.objectID)}
                     type='button'>DISMISS</button>
                 </li>
               })
             }
           </ul>
-          {/* <form>
-            <input type='text' name='search' onChange={this.onSearchChange}>
-              Search:
-            </input>
-          </form> */}
-
         </div>
 
       </div>
