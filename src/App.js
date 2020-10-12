@@ -5,6 +5,7 @@ import {Form, FormGroup, Label, Input} from 'reactstrap'
 import './App.css';
 
 import SearchForm from './Search'
+import List from './List'
 
 const books = [
   {
@@ -61,28 +62,8 @@ const App = () => {
         <img src={logo} className="App-logo" alt="logo" />
         <p>{message}</p>
       </header>
-      <div>
       <SearchForm search={search} onSearchChange={onSearchChange}/>
-      
-
-        <ul>
-          {
-            list.filter(elem => elem.title.includes(search)).map((elem) => {
-              return <li key = {elem.objectID}>
-                <div>Title: {elem.title}</div>
-                <div>URL: {elem.url}</div>
-                <div>Author: {elem.author}</div>
-                <div>Comments: {elem.num_comments}</div>
-                <div>Points: {elem.points}</div>
-                <button
-                  onClick={() => dismissProject(elem.objectID)}
-                  type='button'>DISMISS</button>
-              </li>
-            })
-          }
-        </ul>
-      </div>
-
+      <List list={list} dismissProject={dismissProject}/>
     </div>
   )
 }
