@@ -4,6 +4,8 @@ import logo from './logo.svg';
 import {Form, FormGroup, Label, Input} from 'reactstrap'
 import './App.css';
 
+import SearchForm from './Search'
+
 // const projects = [
 //   {
 //     id: 0,
@@ -63,6 +65,7 @@ class App extends Component {
   }
 
   render() {
+    let {search} = this.state
     return (
       <div className="App">
         <header className="App-header">
@@ -70,13 +73,8 @@ class App extends Component {
           <p>{this.message}</p>
         </header>
         <div>
-        <p/>
-        <Form>
-            <FormGroup name='search'>
-              <Label for="search">Search: </Label>
-              <Input type="text" name="search" id="search" value={this.state.search} placeholder="" onChange={this.onSearchChange} />
-            </FormGroup>
-          </Form>
+        <SearchForm search={search} onSearchChange={this.onSearchChange}/>
+
           <ul>
             {
               this.state.list.filter(elem => elem.title.includes(this.state.search)).map((elem) => {
