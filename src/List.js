@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 
 function List({list, search, dismissProject}) {
+  //console.log(`PROPS: ${props}`)
+  console.log(`PROPS: ${search}`)
   return (
     <ul>
     {
