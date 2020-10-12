@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import logo from './logo.svg';
 //import {Button} from 'bootstrap'
 import {Form, FormGroup, Label, Input} from 'reactstrap'
@@ -6,22 +6,7 @@ import './App.css';
 
 import SearchForm from './Search'
 
-// const projects = [
-//   {
-//     id: 0,
-//     name: "Dynamic Dogs",
-//     type: "Pet Store",
-//     technologies: ["react", "redux", "sequelize"]
-//   },
-//   {
-//     id: 1,
-//     name: "Stock Portfolio Manager",
-//     type: "financial app",
-//     technologies: ["react", "redux", "d3js"]
-//   }
-// ]
-
-const list = [
+const books = [
   {
     title: "React",
     url: "http://react.com",
@@ -40,63 +25,65 @@ const list = [
   }
 ]
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      list,
-      search: ''
-    }
+//class App extends Component {
 
-    this.message = 'HACKER NEWS'
-    this.dismissProject = this.dismissProject.bind(this)
-    this.onSearchChange = this.onSearchChange.bind(this)
+const App = () => {
+  const message = "HACKER NEWS"
+  let [list, changeList] = React.useState(books)
+  console.log("List: ", list)
+  let [search, setSearch] = useState('')
+
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     list,
+  //     search: ''
+  //   }
+
+  //   this.message = 'HACKER NEWS'
+  //   this.dismissProject = this.dismissProject.bind(this)
+  //   this.onSearchChange = this.onSearchChange.bind(this)
+  // }
+  const dismissProject = (id) => {
+    const filteredList = list.filter((elem) => elem.objectID!==id)
+    changeList(filteredList)
+    console.log("Modified list: ", list)
   }
-  dismissProject(id) {
-    const filteredList = this.state.list.filter((elem) => elem.objectID!==id)
-    this.setState({list: filteredList})
-    console.log("Modified state: ", this.state)
-  }
-  onSearchChange(event) {
-    let {search} = this.state
-    console.log("This.state.search before: ", search)
-    this.setState({search: event.target.value})
+
+  const onSearchChange = (event) => {
+    setSearch(event.target.value)
     console.log("This.state.search: ", search)
   }
 
-  render() {
-    let {search} = this.state
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>{this.message}</p>
-        </header>
-        <div>
-        <SearchForm search={search} onSearchChange={this.onSearchChange}/>
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>{message}</p>
+      </header>
+      <div>
+      <SearchForm search={search} onSearchChange={onSearchChange}/>
 
-          <ul>
-            {
-              this.state.list.filter(elem => elem.title.includes(this.state.search)).map((elem) => {
-                return <li key = {elem.objectID}>
-                  <div>Title: {elem.title}</div>
-                  <div>URL: {elem.url}</div>
-                  <div>Author: {elem.author}</div>
-                  <div>Comments: {elem.num_comments}</div>
-                  <div>Points: {elem.points}</div>
-                  <button
-                    onClick={() => this.dismissProject(elem.objectID)}
-                    type='button'>DISMISS</button>
-                </li>
-              })
-            }
-          </ul>
-        </div>
-
+        <ul>
+          {
+            list.filter(elem => elem.title.includes(search)).map((elem) => {
+              return <li key = {elem.objectID}>
+                <div>Title: {elem.title}</div>
+                <div>URL: {elem.url}</div>
+                <div>Author: {elem.author}</div>
+                <div>Comments: {elem.num_comments}</div>
+                <div>Points: {elem.points}</div>
+                <button
+                  onClick={() => dismissProject(elem.objectID)}
+                  type='button'>DISMISS</button>
+              </li>
+            })
+          }
+        </ul>
       </div>
-    )
-  }
 
+    </div>
+  )
 }
 
 export default App;
