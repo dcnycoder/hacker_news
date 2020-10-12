@@ -30,9 +30,10 @@ const books = [
 
 const App = () => {
   const message = "HACKER NEWS"
+  const nestedObj = 
   let [list, changeList] = React.useState(books)
-  console.log("List: ", list)
   let [search, setSearch] = useState('')
+  let [nested, setNested] = useState(nestedObj)
 
   // constructor(props) {
   //   super(props)
@@ -68,5 +69,5 @@ const App = () => {
   )
 }
 
-export default App;
+export default App
 
