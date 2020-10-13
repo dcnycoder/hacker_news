@@ -30,7 +30,13 @@ const books = [
 
 const App = () => {
   const message = "HACKER NEWS"
-  const nestedObj = 
+  const nestedObj = {
+    ownerName: "Dennis",
+    pet: {
+      name: "Cody",
+      age: 5
+    }
+  }
   let [list, changeList] = React.useState(books)
   let [search, setSearch] = useState('')
   let [nested, setNested] = useState(nestedObj)
@@ -64,7 +70,7 @@ const App = () => {
         <p>{message}</p>
       </header>
       <SearchForm search={search} onSearchChange={onSearchChange}/>
-      <List list={list} search={search} dismissProject={dismissProject}/>
+      <List list={list} search={search} dismissProject={dismissProject} nested={nested}/>
     </div>
   )
 }
