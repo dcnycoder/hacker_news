@@ -22,6 +22,7 @@ function List({list, search, dismissProject, nested: {ownerName}, nested: {pet: 
           <div>Author: {elem.author}</div>
           <div>Comments: {elem.num_comments}</div>
           <div>Points: {elem.points}</div>
+
           <button
             onClick={() => dismissProject(elem.objectID)}
             type='button'>DISMISS</button>
