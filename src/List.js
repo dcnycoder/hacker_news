@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import {Card, CardTitle, CardSubtitle, CardText, CardBody, CardImg} from 'reactstrap'
+import {Card, CardTitle, CardSubtitle, CardText, CardBody, CardImg, Button} from 'reactstrap'
 
+//nested destructuring format: destructuredObj: {neededProperty}
 function List({list, search, dismissProject, nested: {ownerName}, nested: {pet: {name}}}) {
-  //console.log(`PROPS: ${props}`)
   console.log(`PROPS: ${search}`)
   return (
     <div>
@@ -23,11 +23,11 @@ function List({list, search, dismissProject, nested: {ownerName}, nested: {pet: 
           <div>Comments: {elem.num_comments}</div>
           <div>Points: {elem.points}</div>
 
-          <button
+          {/* <button
             onClick={() => dismissProject(elem.objectID)}
-            type='button'>DISMISS</button>
+            type='button'>DISMISS</button> */}
         </li></CardText>
-          {/* <Button>Button</Button> */}
+          <Button onClick={() => dismissProject(elem.objectID)}>DISMISS</Button>
         </CardBody>
       </Card>
 
