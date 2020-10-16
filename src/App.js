@@ -38,7 +38,7 @@ const App = () => {
     }
   }
   let [list, changeList] = React.useState(books)
-  let [search, setSearch] = useState('')
+  let [search, setSearch] = useState(localStorage.getItem('search')||'')
   let [nested, setNested] = useState(nestedObj)
 
   // constructor(props) {
@@ -60,6 +60,7 @@ const App = () => {
 
   const onSearchChange = (event) => {
     setSearch(event.target.value)
+    localStorage.setItem('search', event.target.value)
     console.log("This.state.search: ", search)
   }
 
