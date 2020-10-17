@@ -41,6 +41,7 @@ const App = () => {
   let [search, setSearch] = useState(localStorage.getItem('search')||'')
   let [nested, setNested] = useState(nestedObj)
 
+  React.useEffect(() => localStorage.setItem('search', search), [search])
   // constructor(props) {
   //   super(props)
   //   this.state = {
@@ -60,7 +61,8 @@ const App = () => {
 
   const onSearchChange = (event) => {
     setSearch(event.target.value)
-    localStorage.setItem('search', event.target.value)
+
+    //localStorage.setItem('search', event.target.value)
     console.log("This.state.search: ", search)
   }
 
