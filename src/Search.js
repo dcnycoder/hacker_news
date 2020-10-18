@@ -1,18 +1,14 @@
 import React, {Component} from 'react'
 import {Form, FormGroup, Label, Input} from 'reactstrap'
 
-function Search(props) {
-  let {search='React', onSearchChange, children} = props
-  const [variable, variableIncrease] = React.useState('a')
-  //console.log("Children: ", children)
-  console.log("Variable: ", variable)
+function Search({search='React', labelName, name, id, type, onSearchChange, children}) {
+  console.log("Children: ", children)
   return (
     <div name='searchForm'>
       <Form>
           <FormGroup name='search'>
-            <Label for="search">Search: </Label>
-            {children}
-            <Input type="text" name="search" id="search" defaultValue={search} placeholder="" onChange={onSearchChange} />
+          <Label for={labelName}>{children} </Label>
+            <Input type={type} name={name} id={id} defaultValue={search} placeholder="" onChange={onSearchChange} />
           </FormGroup>
         </Form>
     </div>

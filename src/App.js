@@ -72,7 +72,9 @@ const App = () => {
         <img src={logo} className="App-logo" alt="logo" />
         <p>{message}</p>
       </header>
-      <SearchForm search={search} onSearchChange={onSearchChange}/>
+      <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' onSearchChange={onSearchChange}>
+        Search: 
+      </SearchForm>
       <List list={list} search={search} dismissProject={dismissProject} nested={nested}/>
     </div>
   )
