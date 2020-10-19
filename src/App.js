@@ -73,6 +73,7 @@ const App = () => {
         <p>{message}</p>
       </header>
       <SearchForm search={search} onSearchChange={onSearchChange}/>
+      <SearchForm search={search} onSearchChange={onSearchChange}/>
       <List list={list} search={search} dismissProject={dismissProject} nested={nested}/>
     </div>
   )

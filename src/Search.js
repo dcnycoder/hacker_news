@@ -12,7 +12,7 @@ function Search(props) {
           <FormGroup name='search'>
             <Label for="search">Search: </Label>
             {children}
-            <Input type="text" name="search" id="search" defaultValue={search} placeholder="" onChange={onSearchChange} />
+            <Input type="text" name="search" id="search" defaultValue={search} placeholder="" onChange={onSearchChange} autoFocus/>
           </FormGroup>
         </Form>
     </div>
