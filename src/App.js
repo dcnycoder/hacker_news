@@ -39,21 +39,32 @@ const App = () => {
     }
   }
   let [stories, setStories] = React.useState([])
-  let [isLoading, setLoading] = React.useState(false)
+  let [isLoading, setIsLoading] = React.useState(false)
   let [search, setSearch] = useState(localStorage.getItem('search')||'')
   let [nested, setNested] = useState(nestedObj)
 
-  // const getAsyncStories = () => {
-  //   return new Promise (resolve => setTimeout(() => resolve(books), 3000)
-  // )
-  // } 
-
-  const getAsyncStories = new Promise (resolve => 
-    setTimeout(() => resolve(books), 3000)
+  const getAsyncStories = () => {
+    return new Promise (resolve => {
+      setTimeout(() => resolve(books), 3000)
+    } 
   )
-    
+  } 
 
-  React.useEffect(() => getAsyncStories.then (result => setStories(result)), [])
+  //WITHOUT THE FUNCTION WRAP
+  // const getAsyncStories = new Promise (resolve => 
+  //   setTimeout(() => resolve(books), 3000)
+  // )
+
+  React.useEffect(() => {
+    setIsLoading(true)
+
+    getAsyncStories()
+      .then (result => {
+        setStories(result)
+      }
+      ) //end of .then
+    }
+  , []) // end of React.useEffect
 
   React.useEffect(() => localStorage.setItem('search', search), [search])
 
