@@ -7,8 +7,8 @@ function Search({search='React', labelName, name, id, type, onSearchChange, chil
     <div name='searchForm'>
       <Form>
           <FormGroup name='search'>
-          <Label for={labelName}>{children} </Label>
-            <Input type={type} name={name} id={id} defaultValue={search} placeholder="" onChange={onSearchChange} />
+          <Label for={labelName}>{()=>children()} </Label>
+            <Input type={type} name={name} id={id} defaultValue={search} placeholder="" onChange={onSearchChange} autoFocus/>
           </FormGroup>
         </Form>
     </div>

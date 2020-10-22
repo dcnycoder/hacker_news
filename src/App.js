@@ -3,6 +3,7 @@ import logo from './logo.svg';
 //import {Button} from 'bootstrap'
 import {Form, FormGroup, Label, Input} from 'reactstrap'
 import './App.css';
+import Text from './Text'
 
 import SearchForm from './Search'
 import List from './List'
@@ -53,6 +54,12 @@ const App = () => {
   //   this.dismissProject = this.dismissProject.bind(this)
   //   this.onSearchChange = this.onSearchChange.bind(this)
   // }
+
+  const getAsyncStories = () => {
+
+  }
+
+
   const dismissProject = (id) => {
     const filteredList = list.filter((elem) => elem.objectID!==id)
     changeList(filteredList)
@@ -73,7 +80,7 @@ const App = () => {
         <p>{message}</p>
       </header>
       <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' onSearchChange={onSearchChange}>
-        Search: 
+        <Text/>
       </SearchForm>
       <List list={list} search={search} dismissProject={dismissProject} nested={nested}/>
     </div>
