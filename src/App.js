@@ -43,10 +43,9 @@ const App = () => {
   let [nested, setNested] = useState(nestedObj)
 
   React.useEffect(()=> getAsyncStories
-    .then (result => setStories({}))
+    .then (result => setStories({stories: result}))
   )
   React.useEffect(() => localStorage.setItem('search', search), [search])
-
 
 
   const getAsyncStories = new Promise((resolve, reject) => {
@@ -56,7 +55,7 @@ const App = () => {
 
   const dismissProject = (id) => {
     const filteredList = stories.filter((elem) => elem.objectID!==id)
-    changeList(filteredList)
+    setStories(filteredList)
     console.log("Modified list: ", stories)
   }
 
