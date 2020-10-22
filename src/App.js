@@ -42,20 +42,27 @@ const App = () => {
   let [search, setSearch] = useState(localStorage.getItem('search')||'')
   let [nested, setNested] = useState(nestedObj)
 
-  React.useEffect(()=> getAsyncStories
-    .then (result => setStories(result))
+  // const getAsyncStories = () => {
+  //   return new Promise (resolve => setTimeout(() => resolve(books), 3000)
+  // )
+  // } 
+
+  const getAsyncStories = new Promise (resolve => 
+    setTimeout(() => resolve(books), 3000)
+  )
+    
+
+  React.useEffect(() => getAsyncStories
+    .then (result => setTimeout(setStories(result), 3000)), []
   )
 
   React.useEffect(() => localStorage.setItem('search', search), [search])
 
-  const getAsyncStories = new Promise((resolve, reject) => {
-    resolve (books)
-  }
-  )
+
 
   const dismissProject = (id) => {
-    const filteredList = stories.filter((elem) => elem.objectID!==id)
-    setStories(filteredList)
+    const filteredStories = stories.filter((elem) => elem.objectID!==id)
+    setStories(filteredStories)
     console.log("Modified list: ", stories)
   }
 
