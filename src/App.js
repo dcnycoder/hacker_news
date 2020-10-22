@@ -39,6 +39,7 @@ const App = () => {
     }
   }
   let [stories, setStories] = React.useState([])
+  let [isLoading, setLoading] = React.useState(false)
   let [search, setSearch] = useState(localStorage.getItem('search')||'')
   let [nested, setNested] = useState(nestedObj)
 
@@ -52,9 +53,7 @@ const App = () => {
   )
     
 
-  React.useEffect(() => getAsyncStories
-    .then (result => setTimeout(setStories(result), 3000)), []
-  )
+  React.useEffect(() => getAsyncStories.then (result => setStories(result)), [])
 
   React.useEffect(() => localStorage.setItem('search', search), [search])
 
