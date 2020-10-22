@@ -43,10 +43,10 @@ const App = () => {
   let [nested, setNested] = useState(nestedObj)
 
   React.useEffect(()=> getAsyncStories
-    .then (result => setStories({stories: result}))
+    .then (result => setStories(result))
   )
-  React.useEffect(() => localStorage.setItem('search', search), [search])
 
+  React.useEffect(() => localStorage.setItem('search', search), [search])
 
   const getAsyncStories = new Promise((resolve, reject) => {
     resolve (books)
