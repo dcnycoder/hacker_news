@@ -61,8 +61,12 @@ const App = () => {
     getAsyncStories()
       .then (result => {
         setStories(result)
+        setIsLoading(false)
       }
       ) //end of .then
+      .catch (() => {
+        setStories("Something went terribly wrong")
+      })
     }
   , []) // end of React.useEffect
 
