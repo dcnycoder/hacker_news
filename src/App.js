@@ -38,32 +38,26 @@ const App = () => {
       age: 5
     }
   }
-  let [list, changeList] = React.useState(books)
+  let [stories, setStories] = React.useState([])
   let [search, setSearch] = useState(localStorage.getItem('search')||'')
   let [nested, setNested] = useState(nestedObj)
 
+  React.useEffect(()=> getAsyncStories
+    .then (result => setStories({}))
+  )
   React.useEffect(() => localStorage.setItem('search', search), [search])
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     list,
-  //     search: ''
-  //   }
 
-  //   this.message = 'HACKER NEWS'
-  //   this.dismissProject = this.dismissProject.bind(this)
-  //   this.onSearchChange = this.onSearchChange.bind(this)
-  // }
 
-  const getAsyncStories = () => {
 
+  const getAsyncStories = new Promise((resolve, reject) => {
+    resolve (books)
   }
-
+  )
 
   const dismissProject = (id) => {
-    const filteredList = list.filter((elem) => elem.objectID!==id)
+    const filteredList = stories.filter((elem) => elem.objectID!==id)
     changeList(filteredList)
-    console.log("Modified list: ", list)
+    console.log("Modified list: ", stories)
   }
 
   const onSearchChange = (event) => {
@@ -82,7 +76,7 @@ const App = () => {
       <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' onSearchChange={onSearchChange}>
         <Text/>
       </SearchForm>
-      <List list={list} search={search} dismissProject={dismissProject} nested={nested}/>
+      <List list={stories} search={search} dismissProject={dismissProject} nested={nested}/>
     </div>
   )
 }
