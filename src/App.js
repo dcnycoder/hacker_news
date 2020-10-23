@@ -77,7 +77,6 @@ const App = () => {
   const dismissProject = (id) => {
     const filteredStories = stories.filter((elem) => elem.objectID!==id)
     setStories(filteredStories)
-    console.log("Modified list: ", stories)
   }
 
   const onSearchChange = (event) => {
@@ -93,6 +92,7 @@ const App = () => {
         <img src={logo} className="App-logo" alt="logo" />
         <p>{message}</p>
       </header>
+      {isError && <p>Something went wrong</p>}
       { isLoading ? (
           <p>Please wait... The application is loading...</p>
         ) : (
