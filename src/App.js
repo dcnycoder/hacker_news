@@ -42,10 +42,6 @@ const App = () => {
   let [search, setSearch] = useState(localStorage.getItem('search')||'')
   let [nested, setNested] = useState(nestedObj)
 
-  let [stories, dispatchStories] = React.useReducer(
-    storiesReducer, []
-  )
-
   const storiesReducer = (state, action) => {
     if (action.type === "SET_STORIES") {
       return action.payload
@@ -53,6 +49,10 @@ const App = () => {
     else throw new Error("Wrong action type!")
   }
   
+  let [stories, dispatchStories] = React.useReducer(
+    storiesReducer, []
+  )
+
   const getAsyncStories = () => {
     return new Promise (resolve => {
       setTimeout(() => resolve(books), 3000)
@@ -71,7 +71,12 @@ const App = () => {
     getAsyncStories()
       .then (result => {
         // setStories(result)
-        dispatchStories("SET_STORIES", result)
+        dispatchStories(
+            {
+              type: "SET_STORIES", 
+              payload: result
+            }
+        )
         setIsLoading(false)
       }
       ) //end of .then
@@ -86,7 +91,7 @@ const App = () => {
 
   const dismissProject = (id) => {
     const filteredStories = stories.filter((elem) => elem.objectID!==id)
-    setStories(filteredStories)
+    dispatchStories(filteredStories)
   }
 
   const onSearchChange = (event) => {
