@@ -40,6 +40,7 @@ const App = () => {
   }
   let [stories, setStories] = React.useState([])
   let [isLoading, setIsLoading] = React.useState(false)
+  let [isError, setIsError] = React.useState(false)
   let [search, setSearch] = useState(localStorage.getItem('search')||'')
   let [nested, setNested] = useState(nestedObj)
 
@@ -65,7 +66,7 @@ const App = () => {
       }
       ) //end of .then
       .catch (() => {
-        setStories("Something went terribly wrong")
+        setIsError(true)
       })
     }
   , []) // end of React.useEffect
