@@ -73,7 +73,6 @@ const App = () => {
   React.useEffect(() => localStorage.setItem('search', search), [search])
 
 
-
   const dismissProject = (id) => {
     const filteredStories = stories.filter((elem) => elem.objectID!==id)
     setStories(filteredStories)
@@ -93,10 +92,15 @@ const App = () => {
         <img src={logo} className="App-logo" alt="logo" />
         <p>{message}</p>
       </header>
-      <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' onSearchChange={onSearchChange}>
-        <Text/>
-      </SearchForm>
-      <List list={stories} search={search} dismissProject={dismissProject} nested={nested}/>
+      { isLoading ? (
+          <p>Please wait... The application is loading...</p>
+        ) : (
+          <div>
+            <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' onSearchChange={onSearchChange}>
+            <Text/>
+            </SearchForm>
+            <List list={stories} search={search} dismissProject={dismissProject} nested={nested}/>
+          </div>)}
     </div>
   )
 }
