@@ -1,7 +1,5 @@
 import React, {Component, useState} from 'react';
 import logo from './logo.svg';
-//import {Button} from 'bootstrap'
-import {Form, FormGroup, Label, Input} from 'reactstrap'
 import './App.css';
 import Text from './Text'
 
@@ -51,7 +49,7 @@ const App = () => {
   )
   } 
 
-  //WITHOUT THE FUNCTION WRAP
+  //WITHOUT THE FUNCTION WRAP (WORKS)
   // const getAsyncStories = new Promise (resolve => 
   //   setTimeout(() => resolve(books), 3000)
   // )
