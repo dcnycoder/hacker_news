@@ -42,6 +42,13 @@ const App = () => {
   let [search, setSearch] = useState(localStorage.getItem('search')||'')
   let [nested, setNested] = useState(nestedObj)
 
+  const storiesReducer = (state, action) => {
+    if (action.type === "SET_STORIES") {
+      return action.payload
+    }
+    else throw new Error("Wrong action type!")
+  }
+
   const getAsyncStories = () => {
     return new Promise (resolve => {
       setTimeout(() => resolve(books), 3000)
