@@ -36,11 +36,15 @@ const App = () => {
       age: 5
     }
   }
-  let [stories, setStories] = React.useState([])
+  // let [stories, setStories] = React.useState([])
   let [isLoading, setIsLoading] = React.useState(false)
   let [isError, setIsError] = React.useState(false)
   let [search, setSearch] = useState(localStorage.getItem('search')||'')
   let [nested, setNested] = useState(nestedObj)
+
+  let [stories, dispatchStories] = React.useReducer(
+    storiesReducer, []
+  )
 
   const storiesReducer = (state, action) => {
     if (action.type === "SET_STORIES") {
@@ -48,7 +52,7 @@ const App = () => {
     }
     else throw new Error("Wrong action type!")
   }
-
+  
   const getAsyncStories = () => {
     return new Promise (resolve => {
       setTimeout(() => resolve(books), 3000)
@@ -66,7 +70,8 @@ const App = () => {
 
     getAsyncStories()
       .then (result => {
-        setStories(result)
+        // setStories(result)
+        dispatchStories("SET_STORIES", result)
         setIsLoading(false)
       }
       ) //end of .then
