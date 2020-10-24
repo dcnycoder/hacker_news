@@ -43,15 +43,13 @@ const App = () => {
   let [nested, setNested] = useState(nestedObj)
 
   const storiesReducer = (state, action) => {
-    if (action.type === "SET_STORIES") {
-      return action.payload
+    switch (action.type) {
+      case ("SET_STORIES"):
+        return action.payload
+      case ("REMOVE_STORIES"):
+        return state.filter(elem => elem.objectID !== action.payload)
+      default: throw new Error("Wrong action type!")
     }
-    if (action.type === "REMOVE_STORY") {
-      return state.filter(
-        elem => elem.objectID !== action.payload
-      )
-    }
-    else throw new Error("Wrong action type!")
   }
 
   let [stories, dispatchStories] = React.useReducer(
@@ -95,7 +93,6 @@ const App = () => {
 
 
   const removeStory = (id) => {
-    //const filteredStories = stories.filter((elem) => elem.objectID!==id)
     dispatchStories(
       {
         type: "REMOVE_STORY",
