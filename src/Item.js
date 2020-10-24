@@ -17,7 +17,7 @@ const Item = ({title, url, author, num_comments, points, objectID, dismissProjec
     <div>Points: {points}</div>
   </li></CardText>
     <Button onClick={() => dismissProject(objectID)}>DISMISS</Button>
-  </CardBody>
+  </CardBody> 
 </Card>
 }
 

@@ -1,8 +1,7 @@
 import React, {Component, useState} from 'react';
 import logo from './logo.svg';
-//import {Button} from 'bootstrap'
-import {Form, FormGroup, Label, Input} from 'reactstrap'
 import './App.css';
+import Text from './Text'
 
 import SearchForm from './Search'
 import List from './List'
@@ -37,26 +36,72 @@ const App = () => {
       age: 5
     }
   }
-  let [list, changeList] = React.useState(books)
+  // let [stories, setStories] = React.useState([])
+  let [isLoading, setIsLoading] = React.useState(false)
+  let [isError, setIsError] = React.useState(false)
   let [search, setSearch] = useState(localStorage.getItem('search')||'')
   let [nested, setNested] = useState(nestedObj)
 
-  React.useEffect(() => localStorage.setItem('search', search), [search])
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     list,
-  //     search: ''
-  //   }
+  const storiesReducer = (state, action) => {
+    if (action.type === "SET_STORIES") {
+      return action.payload
+    }
+    if (action.type === "REMOVE_STORY") {
+      return state.filter(
+        elem => elem.objectID !== action.payload
+      )
+    }
+    else throw new Error("Wrong action type!")
+  }
 
-  //   this.message = 'HACKER NEWS'
-  //   this.dismissProject = this.dismissProject.bind(this)
-  //   this.onSearchChange = this.onSearchChange.bind(this)
-  // }
-  const dismissProject = (id) => {
-    const filteredList = list.filter((elem) => elem.objectID!==id)
-    changeList(filteredList)
-    console.log("Modified list: ", list)
+  let [stories, dispatchStories] = React.useReducer(
+    storiesReducer, []
+  )
+
+  const getAsyncStories = () => {
+    return new Promise (resolve => {
+      setTimeout(() => resolve(books), 3000)
+    }
+  )
+  }
+
+  //WITHOUT THE FUNCTION WRAP (WORKS)
+  // const getAsyncStories = new Promise (resolve =>
+  //   setTimeout(() => resolve(books), 3000)
+  // )
+
+  React.useEffect(() => {
+    setIsLoading(true)
+
+    getAsyncStories()
+      .then (result => {
+        // setStories(result)
+        dispatchStories(
+            {
+              type: "SET_STORIES",
+              payload: result
+            }
+        )
+        setIsLoading(false)
+      }
+      ) //end of .then
+      .catch (() => {
+        setIsError(true)
+      })
+    }
+  , []) // end of React.useEffect
+
+  React.useEffect(() => localStorage.setItem('search', search), [search])
+
+
+  const removeStory = (id) => {
+    //const filteredStories = stories.filter((elem) => elem.objectID!==id)
+    dispatchStories(
+      {
+        type: "REMOVE_STORY",
+        payload: id
+      }
+      )
   }
 
   const onSearchChange = (event) => {
@@ -72,9 +117,16 @@ const App = () => {
         <img src={logo} className="App-logo" alt="logo" />
         <p>{message}</p>
       </header>
-      <SearchForm search={search} onSearchChange={onSearchChange}/>
-      <SearchForm search={search} onSearchChange={onSearchChange}/>
-      <List list={list} search={search} dismissProject={dismissProject} nested={nested}/>
+      {isError && <p>Something went wrong</p>}
+      { isLoading ? (
+          <p>Please wait... The application is loading...</p>
+        ) : (
+          <div>
+            <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' onSearchChange={onSearchChange}>
+            <Text/>
+            </SearchForm>
+            <List list={stories} search={search} dismissProject={removeStory} nested={nested}/>
+          </div>)}
     </div>
   )
 }
