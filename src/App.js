@@ -57,10 +57,13 @@ const App = () => {
   )
 
   const getAsyncStories = () => {
-    return new Promise (resolve => {
-      setTimeout(() => resolve(books), 3000)
-    }
-  )
+    return new Promise((resolve, reject) => {
+      setTimeout(() => reject(), 3000)
+    })
+
+    // return new Promise (resolve => {
+    //   setTimeout(() => resolve(books), 3000)
+    // })
   }
 
   //WITHOUT THE FUNCTION WRAP (WORKS)
