@@ -53,7 +53,7 @@ const App = () => {
   }
 
   let [stories, dispatchStories] = React.useReducer(
-    storiesReducer, []
+    storiesReducer, {data: [], isLoading: false, isError: false}
   )
 
   const getAsyncStories = () => {
