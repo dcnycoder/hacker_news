@@ -46,6 +46,7 @@ const App = () => {
     switch (action.type) {
       case "STORIES_FETCH_INIT": return {...state, isLoading: true}
       case "STORIES_FETCH_SUCCESS": return {...state, data: action.payload, isLoading: false, isError: false}
+      case "STORIES_FETCH_FAILURE": return {...state, data: [], isLoading: false, isError: true}
 
       // case ("SET_STORIES"):
       //   return action.payload
@@ -84,16 +85,17 @@ const App = () => {
         // setStories(result)
         dispatchStories(
             {
-              // type: "SET_STORIES",
-              type: "STORIES_FETCH_SUCCESS"
+              type: "STORIES_FETCH_SUCCESS",
               payload: result
             }
         )
-        //setIsLoading(false)
       }
       ) //end of .then
       .catch (() => {
-        setIsError(true)
+        dispatchStories({
+          type: "STORIES_FETCH_FAILURE"
+        })
+        //setIsError(true)
       })
     }
   , []) // end of React.useEffect
