@@ -44,10 +44,13 @@ const App = () => {
 
   const storiesReducer = (state, action) => {
     switch (action.type) {
-      case ("SET_STORIES"):
-        return action.payload
-      case ("REMOVE_STORIES"):
-        return state.filter(elem => elem.objectID !== action.payload)
+      case "STORIES_FETCH_INIT": return {...state, isLoading: true}
+      case "STORIES_FETCH_SUCCESS": return {...state, data: action.payload, isLoading: false, isError: false}
+
+      // case ("SET_STORIES"):
+      //   return action.payload
+      // case ("REMOVE_STORIES"):
+      //   return state.filter(elem => elem.objectID !== action.payload)
       default: throw new Error("Wrong action type!")
     }
   }
@@ -57,13 +60,13 @@ const App = () => {
   )
 
   const getAsyncStories = () => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => reject(), 3000)
-    })
-
-    // return new Promise (resolve => {
-    //   setTimeout(() => resolve(books), 3000)
+    // return new Promise((resolve, reject) => {
+    //   setTimeout(() => reject(), 3000)
     // })
+
+    return new Promise (resolve => {
+      setTimeout(() => resolve(books), 3000)
+    })
   }
 
   //WITHOUT THE FUNCTION WRAP (WORKS)
@@ -72,18 +75,21 @@ const App = () => {
   // )
 
   React.useEffect(() => {
-    setIsLoading(true)
+    //setIsLoading(true)
+    dispatchStories({type: "STORIES_FETCH_INIT"})
+
 
     getAsyncStories()
       .then (result => {
         // setStories(result)
         dispatchStories(
             {
-              type: "SET_STORIES",
+              // type: "SET_STORIES",
+              type: "STORIES_FETCH_SUCCESS"
               payload: result
             }
         )
-        setIsLoading(false)
+        //setIsLoading(false)
       }
       ) //end of .then
       .catch (() => {
