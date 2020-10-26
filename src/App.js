@@ -48,10 +48,10 @@ const App = () => {
       case "STORIES_FETCH_SUCCESS": return {...state, data: action.payload, isLoading: false, isError: false}
       case "STORIES_FETCH_FAILURE": return {...state, data: [], isLoading: false, isError: true}
 
-      // case ("SET_STORIES"):
-      //   return action.payload
-      // case ("REMOVE_STORIES"):
-      //   return state.filter(elem => elem.objectID !== action.payload)
+      case ("SET_STORIES"):
+        return action.payload
+      case ("REMOVE_STORIES"):
+        return state.filter(elem => elem.objectID !== action.payload)
       default: throw new Error("Wrong action type!")
     }
   }
