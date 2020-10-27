@@ -10,12 +10,9 @@ function List({list, search, dismissProject, nested: {ownerName}, nested: {pet: 
     <div>
       <p>Name: {ownerName}</p>
       <p>Pet Name: {name}</p>
-    <ul>
-    {
-      list.filter(elem => elem.title.includes(search)).map((elem) => <Item key={elem.objectID} {...elem} dismissProject={dismissProject}/>)
-
-    }
-  </ul>
+      <ul>{list.map(story => 
+        <Item {...story}/>
+      )}</ul>
   </div>
   )
 }
