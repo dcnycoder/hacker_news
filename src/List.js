@@ -3,7 +3,7 @@ import Item from './Item'
 
 
 //nested destructuring format: destructuredObj: {neededProperty}
-function List({list, search, dismissProject, nested: {ownerName}, nested: {pet: {name}}}) {
+function List({list, search, removeStory, nested: {ownerName}, nested: {pet: {name}}}) {
   //console.log('List spread: ', ...list)
   console.log("LIST: ", list)
   return (

@@ -1,9 +1,9 @@
 import React from 'react'
 import {Card, CardTitle, CardSubtitle, CardText, CardBody, CardImg, Button} from 'reactstrap'
 
-const Item = ({title, url, author, num_comments, points, objectID, dismissProject}) => {
+const Item = ({title, url, author, num_comments, points, objectID, removeStory}) => {
   console.log("Title: ", title)
-  console.log("dismissProject: ", dismissProject)
+  console.log("dismissProject: ", removeStory)
   return <Card>
   <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" />
   <CardBody>
@@ -16,7 +16,7 @@ const Item = ({title, url, author, num_comments, points, objectID, dismissProjec
     <div>Comments: {num_comments}</div>
     <div>Points: {points}</div>
   </li></CardText>
-    <Button onClick={() => dismissProject(objectID)}>DISMISS</Button>
+    <Button onClick={() => removeStory(objectID)}>DISMISS</Button>
   </CardBody> 
 </Card>
 }
