@@ -6,26 +6,25 @@ import Text from './Text'
 import SearchForm from './Search'
 import List from './List'
 
-const books = [
-  {
-    title: "React",
-    url: "http://react.com",
-    author: "Jordan Walke",
-    num_comments: 3,
-    points: 4,
-    objectID: 0,
-  },
-  {
-    title: "Redux",
-    url: "www.redux.com",
-    author: "Jordan Walke",
-    num_comments: 8,
-    points: 4.7,
-    objectID: 1
-  }
-]
-
-//class App extends Component {
+// const books = [
+//   {
+//     title: "React",
+//     url: "http://react.com",
+//     author: "Jordan Walke",
+//     num_comments: 3,
+//     points: 4,
+//     objectID: 0,
+//   },
+//   {
+//     title: "Redux",
+//     url: "www.redux.com",
+//     author: "Jordan Walke",
+//     num_comments: 8,
+//     points: 4.7,
+//     objectID: 1
+//   }
+// ]
+const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?query="
 
 const App = () => {
   const message = "HACKER NEWS"
@@ -64,15 +63,11 @@ const App = () => {
     storiesReducer, {data: [], isLoading: false, isError: false}
   )
 
-  const getAsyncStories = () => {
-    // return new Promise((resolve, reject) => {
-    //   setTimeout(() => reject(), 3000)
-    // })
-
-    return new Promise ((resolve, reject) => {
-      setTimeout(() => reject(books), 3000)
-    })
-  }
+  // const getAsyncStories = () => {
+  //   return new Promise((resolve, reject) => {
+  //     setTimeout(() => reject(), 3000)
+  //   })
+  // }
 
   //WITHOUT THE FUNCTION WRAP (WORKS)
   // const getAsyncStories = new Promise (resolve =>
@@ -80,15 +75,17 @@ const App = () => {
   // )
 
   React.useEffect(() => {
+    console.log(`${API_ENDPOINT}${search}`)
     dispatchStories({type: "STORIES_FETCH_INIT"})
 
 
-    getAsyncStories()
+    fetch(`${API_ENDPOINT}${search}`) //using browser native fetch API
+      .then (response => response.json())
       .then (result => {
         dispatchStories(
             {
               type: "STORIES_FETCH_SUCCESS",
-              payload: result
+              payload: result.hits
             }
         )
       }
