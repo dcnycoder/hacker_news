@@ -37,8 +37,8 @@ const App = () => {
     }
   }
   // let [stories, setStories] = React.useState([])
-  let [isLoading, setIsLoading] = React.useState(false)
-  let [isError, setIsError] = React.useState(false)
+  // let [isLoading, setIsLoading] = React.useState(false)
+  // let [isError, setIsError] = React.useState(false)
   let [search, setSearch] = useState(localStorage.getItem('search')||'')
   let [nested, setNested] = useState(nestedObj)
 
@@ -46,11 +46,11 @@ const App = () => {
     switch (action.type) {
       case "STORIES_FETCH_INIT": return {...state, isLoading: true}
       case "STORIES_FETCH_SUCCESS": return {...state, data: action.payload, isLoading: false, isError: false}
-      case "STORIES_FETCH_FAILURE": return {...state, data: [], isLoading: false, isError: true}
+      case "STORIES_FETCH_FAILURE": return {...state, isLoading: false, isError: true}
 
       case ("SET_STORIES"):
         return action.payload
-      case ("REMOVE_STORIES"):
+      case ("REMOVE_STORY"):
         return state.filter(elem => elem.objectID !== action.payload)
       default: throw new Error("Wrong action type!")
     }
@@ -76,13 +76,11 @@ const App = () => {
   // )
 
   React.useEffect(() => {
-    //setIsLoading(true)
     dispatchStories({type: "STORIES_FETCH_INIT"})
 
 
     getAsyncStories()
       .then (result => {
-        // setStories(result)
         dispatchStories(
             {
               type: "STORIES_FETCH_SUCCESS",
@@ -125,15 +123,15 @@ const App = () => {
         <img src={logo} className="App-logo" alt="logo" />
         <p>{message}</p>
       </header>
-      {isError && <p>Something went wrong</p>}
-      { isLoading ? (
+      {stories.isError && <p>Something went wrong</p>}
+      { stories.isLoading ? (
           <p>Please wait... The application is loading...</p>
         ) : (
           <div>
             <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' onSearchChange={onSearchChange}>
             <Text/>
             </SearchForm>
-            <List list={stories} search={search} dismissProject={removeStory} nested={nested}/>
+            <List list={stories.data} search={search} dismissProject={removeStory} nested={nested}/>
           </div>)}
     </div>
   )
