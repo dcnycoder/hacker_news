@@ -45,13 +45,17 @@ const App = () => {
   const storiesReducer = (state, action) => {
     switch (action.type) {
       case "STORIES_FETCH_INIT": return {...state, isLoading: true}
+
       case "STORIES_FETCH_SUCCESS": return {...state, data: action.payload, isLoading: false, isError: false}
+
       case "STORIES_FETCH_FAILURE": return {...state, isLoading: false, isError: true}
 
       case ("SET_STORIES"):
         return action.payload
+
       case ("REMOVE_STORY"):
-        return state.filter(elem => elem.objectID !== action.payload)
+        return {...state, data: state.data.filter(elem => elem.objectID != action.payload)}
+        
       default: throw new Error("Wrong action type!")
     }
   }
