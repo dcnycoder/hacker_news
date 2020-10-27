@@ -134,7 +134,7 @@ const App = () => {
             <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' onSearchChange={onSearchChange}>
             <Text/>
             </SearchForm>
-            <List list={stories.data} search={search} removeStory={removeStory} nested={nested}/>
+            <List stories={stories.data} search={search} removeStory={removeStory} nested={nested}/>
           </div>)}
     </div>
   )

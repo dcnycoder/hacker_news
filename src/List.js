@@ -3,15 +3,15 @@ import Item from './Item'
 
 
 //nested destructuring format: destructuredObj: {neededProperty}
-function List({list, search, removeStory, nested: {ownerName}, nested: {pet: {name}}}) {
+function List({stories, search, removeStory, nested: {ownerName}, nested: {pet: {name}}}) {
   //console.log('List spread: ', ...list)
-  console.log("LIST: ", list)
+  console.log("STORIES: ", stories)
   return (
     <div>
       <p>Name: {ownerName}</p>
       <p>Pet Name: {name}</p>
-      <ul>{list.map(story => 
-        <Item {...story}/>
+      <ul>{stories.map(story => 
+        <Item {...story} removeStory={removeStory}/>
       )}</ul>
   </div>
   )
