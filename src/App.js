@@ -78,8 +78,8 @@ const App = () => {
   React.useEffect(() => {
     console.log("search: ", search)
     console.log(`API URL: ${API_ENDPOINT}${search}`)
-    
-    if (search === '') return
+
+    if (!search) return
 
     dispatchStories({type: "STORIES_FETCH_INIT"})
 
@@ -101,7 +101,7 @@ const App = () => {
         //setIsError(true)
       })
     }
-  , []) // end of React.useEffect
+  , [search]) // end of React.useEffect
 
   React.useEffect(() => localStorage.setItem('search', search), [search])
 
