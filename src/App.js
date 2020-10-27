@@ -39,6 +39,7 @@ const App = () => {
   // let [isLoading, setIsLoading] = React.useState(false)
   // let [isError, setIsError] = React.useState(false)
   let [search, setSearch] = useState(localStorage.getItem('search')||'')
+  console.log("SEARCH INITIALLY: ", search)
   let [nested, setNested] = useState(nestedObj)
 
   const storiesReducer = (state, action) => {
@@ -53,7 +54,7 @@ const App = () => {
         return action.payload
 
       case ("REMOVE_STORY"):
-        return {...state, data: state.data.filter(elem => elem.objectID != action.payload)}
+        return {...state, data: state.data.filter(elem => elem.objectID !== action.payload)}
 
       default: throw new Error("Wrong action type!")
     }
@@ -75,9 +76,12 @@ const App = () => {
   // )
 
   React.useEffect(() => {
-    console.log(`${API_ENDPOINT}${search}`)
-    dispatchStories({type: "STORIES_FETCH_INIT"})
+    console.log("search: ", search)
+    console.log(`API URL: ${API_ENDPOINT}${search}`)
+    
+    if (search === '') return
 
+    dispatchStories({type: "STORIES_FETCH_INIT"})
 
     fetch(`${API_ENDPOINT}${search}`) //using browser native fetch API
       .then (response => response.json())
@@ -113,12 +117,8 @@ const App = () => {
 
   const onSearchChange = (event) => {
     setSearch(event.target.value)
-    //localStorage.setItem('search', event.target.value)
     console.log("This.state.search: ", search)
   }
-
-  let searchedStories = stories.data.filter(story => story.title.toLowerCase().includes(search.toLowerCase()))
-  console.log("searchedStories: ", searchedStories)
 
   return (
     <div className="App">
@@ -134,7 +134,7 @@ const App = () => {
             <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' onSearchChange={onSearchChange}>
             <Text/>
             </SearchForm>
-            <List list={searchedStories} search={search} dismissProject={removeStory} nested={nested}/>
+            <List list={stories.data} search={search} dismissProject={removeStory} nested={nested}/>
           </div>)}
     </div>
   )
