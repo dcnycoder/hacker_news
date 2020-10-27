@@ -69,8 +69,8 @@ const App = () => {
     //   setTimeout(() => reject(), 3000)
     // })
 
-    return new Promise (resolve => {
-      setTimeout(() => resolve(books), 3000)
+    return new Promise ((resolve, reject) => {
+      setTimeout(() => reject(books), 3000)
     })
   }
 
@@ -130,7 +130,7 @@ const App = () => {
         <p>{message}</p>
       </header>
       {stories.isError && <p>Something went wrong</p>}
-      { stories.isLoading ? (
+      { (stories.isLoading && !stories.isError)? (
           <p>Please wait... The application is loading...</p>
         ) : (
           <div>
