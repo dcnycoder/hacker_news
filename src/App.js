@@ -48,7 +48,7 @@ const App = () => {
 
       case "STORIES_FETCH_SUCCESS": return {...state, data: action.payload, isLoading: false, isError: false}
 
-      case "STORIES_FETCH_FAILURE": return {...state, isLoading: false, isError: true}
+      case "STORIES_FETCH_FAILURE": return {...state, isLoading: false, isError: action.payload}
 
       case ("SET_STORIES"):
         return action.payload
@@ -75,31 +75,38 @@ const App = () => {
   //   setTimeout(() => resolve(books), 3000)
   // )
 
-  React.useEffect(() => {
-    console.log("search: ", search)
-
-    if (!search) return
-
-    dispatchStories({type: "STORIES_FETCH_INIT"})
-
-    fetch(`${API_ENDPOINT}${search}`) //using browser native fetch API
-      .then (response => response.json())
-      .then (result => {
-        dispatchStories(
-            {
-              type: "STORIES_FETCH_SUCCESS",
-              payload: result.hits
-            }
-        )
-      }
-      ) //end of .then
-      .catch (() => {
-        dispatchStories({
-          type: "STORIES_FETCH_FAILURE"
-        })
-      })
+  const handleFetchStories = React.useCallback(() => {
+    {
+      {
+        console.log("search: ", search)
+    
+        if (!search) return
+    
+        dispatchStories({type: "STORIES_FETCH_INIT"})
+    
+        fetch(`${API_ENDPOINT}${search}`) //using browser native fetch API
+          .then (response => response.json())
+          .then (result => {
+            dispatchStories(
+                {
+                  type: "STORIES_FETCH_SUCCESS",
+                  payload: result.hits
+                }
+            )
+          }
+          ) //end of .then
+          .catch ((error) => {
+            dispatchStories({
+              type: "STORIES_FETCH_FAILURE",
+              payload: error.message
+            })
+          })
+        }
     }
-  , [search]) // end of React.useEffect
+  }, [search]) //end of handleFetchStories
+
+  React.useEffect(() => handleFetchStories
+  , [handleFetchStories]) // end of React.useEffect
 
   React.useEffect(() => localStorage.setItem('search', search), [search])
 
@@ -124,7 +131,7 @@ const App = () => {
         <img src={logo} className="App-logo" alt="logo" />
         <p>{message}</p>
       </header>
-      {stories.isError && <p>Something went wrong</p>}
+  {stories.isError && <p>Something went wrong: {stories.isError}</p>}
       { (stories.isLoading && !stories.isError)? (
           <p>Please wait... The application is loading...</p>
         ) : (
