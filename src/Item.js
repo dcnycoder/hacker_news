@@ -16,7 +16,7 @@ const Item = ({title, url, author, num_comments, points, objectID, removeStory})
     <div>Comments: {num_comments}</div>
     <div>Points: {points}</div>
   </li></CardText>
-    <Button onClick={() => removeStory(objectID)}>DISMISS</Button>
+    <Button onClick={() => removeStory(objectID)}>REMOVE STORY</Button>
   </CardBody> 
 </Card>
 }

@@ -77,7 +77,6 @@ const App = () => {
 
   React.useEffect(() => {
     console.log("search: ", search)
-    console.log(`API URL: ${API_ENDPOINT}${search}`)
 
     if (!search) return
 
@@ -98,7 +97,6 @@ const App = () => {
         dispatchStories({
           type: "STORIES_FETCH_FAILURE"
         })
-        //setIsError(true)
       })
     }
   , [search]) // end of React.useEffect
