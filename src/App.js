@@ -74,7 +74,6 @@ const App = () => {
   // const getAsyncStories = new Promise (resolve =>
   //   setTimeout(() => resolve(books), 3000)
   // )
-
   const handleFetchStories = React.useCallback(() => {
     {
       {
@@ -105,10 +104,11 @@ const App = () => {
     }
   }, [search]) //end of handleFetchStories
 
-  React.useEffect(() => handleFetchStories
-  , [handleFetchStories]) // end of React.useEffect
-
   React.useEffect(() => localStorage.setItem('search', search), [search])
+
+
+  React.useEffect(() => handleFetchStories()
+  , [handleFetchStories]) // end of React.useEffect
 
 
   const removeStory = (id) => {
@@ -121,6 +121,7 @@ const App = () => {
   }
 
   const onSearchChange = (event) => {
+    console.log("New search term: ", event.target.value)
     setSearch(event.target.value)
     console.log("This.state.search: ", search)
   }

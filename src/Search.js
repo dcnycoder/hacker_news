@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Form, FormGroup, Label, Input} from 'reactstrap'
+import {Form, FormGroup, Label, Input, Button} from 'reactstrap'
 
 function Search({search='React', labelName, name, id, type, onSearchChange, children}) {
   console.log("Children: ", children)
@@ -8,7 +8,8 @@ function Search({search='React', labelName, name, id, type, onSearchChange, chil
       <Form>
           <FormGroup name='search'>
           <Label for={labelName}>{()=>children()} </Label>
-            <Input type={type} name={name} id={id} defaultValue={search} placeholder="" onChange={onSearchChange} autoFocus/>
+            <Input type={type} name={name} id={id} defaultValue={search} onChange={onSearchChange} placeholder="" autoFocus/>
+            <Button onClick={onSearchChange}>SEARCH</Button>
           </FormGroup>
         </Form>
     </div>
