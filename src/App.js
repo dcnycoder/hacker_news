@@ -1,4 +1,5 @@
 import React, {Component, useState} from 'react';
+import axios from 'axios'
 import logo from './logo.svg';
 import './App.css';
 import Text from './Text'
@@ -114,7 +115,6 @@ const App = () => {
   React.useEffect(() => handleFetchStories()
   , [handleFetchStories]) // end of React.useEffect
 
-
   const removeStory = (id) => {
     dispatchStories(
       {
@@ -132,7 +132,7 @@ const App = () => {
 
   const handleSearchSubmit = (event) => {
     console.log("URL + SEARCH: ", url+search)
-    setUrl(API_ENDPOINT+search)
+    setUrl(`${API_ENDPOINT}${search}`)
     console.log("URL after setURL: ", url)
   }
 
