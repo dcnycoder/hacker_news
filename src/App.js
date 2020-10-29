@@ -38,14 +38,19 @@ const App = () => {
   // let [stories, setStories] = React.useState([])
   // let [isLoading, setIsLoading] = React.useState(false)
   // let [isError, setIsError] = React.useState(false)
+
+  let [url, setUrl] = React.useState(API_ENDPOINT)
   let [search, setSearch] = useState(localStorage.getItem('search')||'')
   console.log("SEARCH INITIALLY: ", search)
   let [nested, setNested] = useState(nestedObj)
 
   const storiesReducer = (state, action) => {
     switch (action.type) {
-      case "STORIES_FETCH_INIT": return {...state, isLoading: true}
-
+      case "STORIES_FETCH_INIT": {
+        console.log("FETCH INIT FIRED, state.search is: ", state.search)
+        return {...state, search: state.search, isLoading: true}
+      }
+      
       case "STORIES_FETCH_SUCCESS": return {...state, data: action.payload, isLoading: false, isError: false}
 
       case "STORIES_FETCH_FAILURE": return {...state, isLoading: false, isError: action.payload}
@@ -77,13 +82,13 @@ const App = () => {
   const handleFetchStories = React.useCallback(() => {
     {
       {
-        console.log("search: ", search)
+        console.log("search in fetch stories: ", search)
     
         if (!search) return
     
         dispatchStories({type: "STORIES_FETCH_INIT"})
     
-        fetch(`${API_ENDPOINT}${search}`) //using browser native fetch API
+        fetch(`${url}`) //using browser native fetch API
           .then (response => response.json())
           .then (result => {
             dispatchStories(
@@ -102,10 +107,9 @@ const App = () => {
           })
         }
     }
-  }, [search]) //end of handleFetchStories
+  }, [url]) //end of handleFetchStories
 
   React.useEffect(() => localStorage.setItem('search', search), [search])
-
 
   React.useEffect(() => handleFetchStories()
   , [handleFetchStories]) // end of React.useEffect
@@ -120,10 +124,16 @@ const App = () => {
       )
   }
 
-  const onSearchChange = (event) => {
+  const handleSearchInput = (event) => {
     console.log("New search term: ", event.target.value)
     setSearch(event.target.value)
     console.log("This.state.search: ", search)
+  }
+
+  const handleSearchSubmit = (event) => {
+    console.log("URL + SEARCH: ", url+search)
+    setUrl(API_ENDPOINT+search)
+    console.log("URL after setURL: ", url)
   }
 
   return (
@@ -137,7 +147,8 @@ const App = () => {
           <p>Please wait... The application is loading...</p>
         ) : (
           <div>
-            <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' onSearchChange={onSearchChange}>
+            <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' handleSearchInput={handleSearchInput}
+              handleSearchSubmit={handleSearchSubmit}>
             <Text/>
             </SearchForm>
             <List stories={stories.data} search={search} removeStory={removeStory} nested={nested}/>

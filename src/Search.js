@@ -1,15 +1,15 @@
 import React, {Component} from 'react'
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap'
 
-function Search({search='React', labelName, name, id, type, onSearchChange, children}) {
+function Search({search='React', labelName, name, id, type, handleSearchInput, handleSearchSubmit, children}) {
   console.log("Children: ", children)
   return (
     <div name='searchForm'>
       <Form>
           <FormGroup name='search'>
           <Label for={labelName}>{()=>children()} </Label>
-            <Input type={type} name={name} id={id} defaultValue={search} onChange={onSearchChange} placeholder="" autoFocus/>
-            <Button onClick={onSearchChange}>SEARCH</Button>
+            <Input type={type} name={name} id={id} defaultValue={search} onChange={handleSearchInput} placeholder="" autoFocus/>
+            <Button onClick={handleSearchSubmit}>SEARCH</Button>
           </FormGroup>
         </Form>
     </div>
