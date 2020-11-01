@@ -41,14 +41,16 @@ const App = () => {
   // let [isError, setIsError] = React.useState(false)
 
   let [url, setUrl] = React.useState(API_ENDPOINT)
-  let [search, setSearch] = useState(localStorage.getItem('search')||'')
+  //let [search, setSearch] = useState(localStorage.getItem('search')||'')
+  let [search, setSearch] = useState('')
+
   console.log("SEARCH INITIALLY: ", search)
   let [nested, setNested] = useState(nestedObj)
 
   const storiesReducer = (state, action) => {
     switch (action.type) {
       case "STORIES_FETCH_INIT": {
-        console.log("FETCH INIT FIRED, state.search is: ", state.search)
+        console.log("FETCH INIT FIRED, state.search is: ", search)
         return {...state, search: state.search, isLoading: true}
       }
       
@@ -79,10 +81,10 @@ const App = () => {
   //WITHOUT THE FUNCTION WRAP (WORKS)
   // const getAsyncStories = new Promise (resolve =>
   //   setTimeout(() => resolve(books), 3000)
-  // )
-  const handleFetchStories = React.useCallback(() => {
-    {
-      {
+  // )\
+
+  //const handleFetchStories = React.useCallback(() => {
+  function handleFetchStories() {
         console.log("search in fetch stories: ", search)
     
         if (!search) return
@@ -107,13 +109,16 @@ const App = () => {
             })
           })
         }
-    }
-  }, [url]) //end of handleFetchStories
+    
+ //}, [url]) //end of handleFetchStories
 
-  React.useEffect(() => localStorage.setItem('search', search), [search])
+  //React.useEffect(() => localStorage.setItem('search', search), [search])
+
+  // React.useEffect(() => handleFetchStories()
+  // , [handleFetchStories]) // end of React.useEffect
 
   React.useEffect(() => handleFetchStories()
-  , [handleFetchStories]) // end of React.useEffect
+  , [url]) // end of React.useEffect
 
   const removeStory = (id) => {
     dispatchStories(
