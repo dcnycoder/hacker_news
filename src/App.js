@@ -136,6 +136,7 @@ const App = () => {
   }
 
   const handleSearchSubmit = (event) => {
+    event.preventDefault()
     console.log("URL + SEARCH: ", url+search)
     setUrl(`${API_ENDPOINT}${search}`)
     console.log("URL after setURL: ", url)
