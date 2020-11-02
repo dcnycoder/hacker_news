@@ -116,7 +116,7 @@ const App = () => {
   // , [handleFetchStories]) // end of React.useEffect
 
   React.useEffect(() => handleFetchStories()
-  , [url]) // end of React.useEffect
+  , [handleFetchStories]) // end of React.useEffect
 
   const removeStory = (id) => {
     dispatchStories(
