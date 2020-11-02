@@ -36,13 +36,10 @@ const App = () => {
       age: 5
     }
   }
-  // let [stories, setStories] = React.useState([])
-  // let [isLoading, setIsLoading] = React.useState(false)
-  // let [isError, setIsError] = React.useState(false)
 
   let [url, setUrl] = React.useState(API_ENDPOINT)
-  //let [search, setSearch] = useState(localStorage.getItem('search')||'')
-  let [search, setSearch] = useState('')
+  let [search, setSearch] = useState(localStorage.getItem('search')||'')
+  //let [search, setSearch] = useState('')
 
   console.log("SEARCH INITIALLY: ", search)
   let [nested, setNested] = useState(nestedObj)
@@ -81,7 +78,7 @@ const App = () => {
   //WITHOUT THE FUNCTION WRAP (WORKS)
   // const getAsyncStories = new Promise (resolve =>
   //   setTimeout(() => resolve(books), 3000)
-  // )\
+  // )
 
   const handleFetchStories = React.useCallback(() => {
         console.log("search in fetch stories: ", search)
@@ -111,9 +108,6 @@ const App = () => {
     , [url]) //end of handleFetchStories
 
   //React.useEffect(() => localStorage.setItem('search', search), [search])
-
-  // React.useEffect(() => handleFetchStories()
-  // , [handleFetchStories]) // end of React.useEffect
 
   React.useEffect(() => handleFetchStories()
   , [handleFetchStories]) // end of React.useEffect
