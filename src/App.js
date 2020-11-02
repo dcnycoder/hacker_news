@@ -129,7 +129,8 @@ const App = () => {
 
   const handleSearchSubmit = (event) => {
     event.preventDefault()
-    console.log("URL + SEARCH: ", url+search)
+    //console.log("URL + SEARCH: ", url+search)
+    localStorage.setItem('search', search)
     setUrl(`${API_ENDPOINT}${search}`)
     console.log("URL after setURL: ", url)
   }
