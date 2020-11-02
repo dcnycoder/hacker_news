@@ -83,8 +83,7 @@ const App = () => {
   //   setTimeout(() => resolve(books), 3000)
   // )\
 
-  //const handleFetchStories = React.useCallback(() => {
-  function handleFetchStories() {
+  const handleFetchStories = React.useCallback(() => {
         console.log("search in fetch stories: ", search)
     
         if (!search) return
@@ -109,8 +108,7 @@ const App = () => {
             })
           })
         }
-    
- //}, [url]) //end of handleFetchStories
+    , [url]) //end of handleFetchStories
 
   //React.useEffect(() => localStorage.setItem('search', search), [search])
 
