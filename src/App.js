@@ -84,30 +84,50 @@ const App = () => {
         console.log("search in fetch stories: ", search)
     
         if (!search) return
-    
         dispatchStories({type: "STORIES_FETCH_INIT"})
-    
-        fetch(`${url}`) //using browser native fetch API
-          .then (response => response.json())
-          .then (result => {
-            dispatchStories(
-                {
-                  type: "STORIES_FETCH_SUCCESS",
-                  payload: result.hits
-                }
-            )
-          }
-          ) //end of .then
-          .catch ((error) => {
-            dispatchStories({
-              type: "STORIES_FETCH_FAILURE",
-              payload: error.message
-            })
+        
+
+      async function getData () {
+        try {
+          console.log("URL in handleFetch: ", url)
+          const result = await axios.get(url)
+          console.log("Result: ", result)
+          dispatchStories({
+            type: "STORIES_FETCH_SUCCESS",
+            payload: result.data.hits
           })
+        }
+        catch {
+          dispatchStories({
+            type: "STORIES_FETCH_FAILURE",
+            //payload: error.message
+          })
+        } // end of try/catch
+      }      
+      
+      getData()
+
+        // fetch(`${url}`) //using browser native fetch API
+        //   .then (response => response.json())
+        //   .then (result => {
+        //     dispatchStories(
+        //         {
+        //           type: "STORIES_FETCH_SUCCESS",
+        //           payload: result.hits
+        //         }
+        //     )
+        //   }
+        //   ) //end of .then
+        //   .catch ((error) => {
+        //     dispatchStories({
+        //       type: "STORIES_FETCH_FAILURE",
+        //       payload: error.message
+        //     })
+        //   }) // end of thenable fetch
         }
     , [url]) //end of handleFetchStories
 
-  //React.useEffect(() => localStorage.setItem('search', search), [search])
+  React.useEffect(() => localStorage.setItem('search', search), [search])
 
   React.useEffect(() => handleFetchStories()
   , [handleFetchStories]) // end of React.useEffect
@@ -129,8 +149,6 @@ const App = () => {
 
   const handleSearchSubmit = (event) => {
     event.preventDefault()
-    //console.log("URL + SEARCH: ", url+search)
-    localStorage.setItem('search', search)
     setUrl(`${API_ENDPOINT}${search}`)
     console.log("URL after setURL: ", url)
   }
