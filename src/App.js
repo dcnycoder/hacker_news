@@ -37,15 +37,26 @@ const App = () => {
     }
   }
 
-  //an initial search variable will be set via using a custom useSemiPersistentState hook
+  //an initial search variable will be set using a custom useSemiPersistentState hook
   //the hook gets the var from localStorage
-  //the hook returns a state and setState as a normal hook would
+  //the hook returns a state and setState as a normal useState hook would
 
-  let [search, setSearch] = useSemiPersistentState()
+  const initialSearch = 'React'
   let [url, setUrl] = React.useState(API_ENDPOINT)
-  let [search, setSearch] = useState(localStorage.getItem('search')||'')
+  let [search, setSearch] = useSemiPersistentState(initialSearch)
   
-  //let [search, setSearch] = useState('')
+
+  
+  function useSemiPersistentState(initialSearch) {
+    console.log("semipersistent state was fired! localStorage('search') is: ", localStorage.getItem('search'))
+    let [search, setSearch] = useState(localStorage.getItem('search')||initialSearch)
+
+    //sets the localStorage search item on initial render and re-render (because useSemiPersistent state gets called
+    //on every render)
+    React.useEffect(() => localStorage.setItem('search', search), [url])
+
+    return [search, setSearch]
+  }
 
   console.log("SEARCH INITIALLY: ", search)
   let [nested, setNested] = useState(nestedObj)
@@ -133,7 +144,6 @@ const App = () => {
         }
     , [url]) //end of handleFetchStories
 
-  React.useEffect(() => localStorage.setItem('search', search), [search])
 
   React.useEffect(() => handleFetchStories()
   , [handleFetchStories]) // end of React.useEffect
