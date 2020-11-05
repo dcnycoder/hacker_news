@@ -37,8 +37,14 @@ const App = () => {
     }
   }
 
+  //an initial search variable will be set via using a custom useSemiPersistentState hook
+  //the hook gets the var from localStorage
+  //the hook returns a state and setState as a normal hook would
+
+  let [search, setSearch] = useSemiPersistentState()
   let [url, setUrl] = React.useState(API_ENDPOINT)
   let [search, setSearch] = useState(localStorage.getItem('search')||'')
+  
   //let [search, setSearch] = useState('')
 
   console.log("SEARCH INITIALLY: ", search)
