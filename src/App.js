@@ -27,6 +27,11 @@ import List from './List'
 // ]
 const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?query="
 
+const getSumComments = (stories) => {
+  console.log("C")
+  return stories.reduce((acc, story) => acc + story.num_comments , 0)
+}
+
 const App = () => {
   const message = "HACKER NEWS"
   const nestedObj = {
@@ -45,8 +50,7 @@ const App = () => {
   const initialSearch = 'React'
   let [url, setUrl] = React.useState(API_ENDPOINT)
   let [search, setSearch] = useSemiPersistentState(initialSearch)
-
-  const sumComments = getSumComments
+  let [sumComments, setSumComments] = useState(0)
 
   function useSemiPersistentState(initialSearch) {
     console.log("semipersistent state was fired! localStorage('search') is: ", localStorage.getItem('search'))
@@ -69,7 +73,7 @@ const App = () => {
         return {...state, search: state.search, isLoading: true}
       }
       
-      case "STORIES_FETCH_SUCCESS": return {...state, data: action.payload, isLoading: false, isError: false}
+      case "STORIES_FETCH_SUCCESS": return {...state, data: action.payload, sumComments: getSumComments(action.payload), isLoading: false, isError: false}
 
       case "STORIES_FETCH_FAILURE": return {...state, isLoading: false, isError: action.payload}
 
@@ -97,10 +101,7 @@ const App = () => {
   // const getAsyncStories = new Promise (resolve =>
   //   setTimeout(() => resolve(books), 3000)
   // )
-  const getSumComments = (stories) => {
-    console.log("C")
-    return stories.reduce(acc, story => acc + story.num_comments , 0)
-  }
+
 
   const handleFetchStories = React.useCallback(() => {
         console.log("search in fetch stories: ", search)
@@ -187,9 +188,9 @@ const App = () => {
           <p>Please wait... The application is loading...</p>
         ) : (
           <div>
-            <p>Total comments for all stories</p>
-            <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' handleSearchInput={handleSearchInput}
+            <SearchForm search={search} sumComments={sumComments} labelName='Label Name' name='search' type='text' id='search' handleSearchInput={handleSearchInput}
               handleSearchSubmit={handleSearchSubmit}>
+            <p>Total comments for all stories: ${sumComments}</p>
             <Text/>
             </SearchForm>
             <List stories={stories.data} search={search} removeStory={removeStory} nested={nested}/>
