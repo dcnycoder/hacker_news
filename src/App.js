@@ -36,6 +36,7 @@ const App = () => {
       age: 5
     }
   }
+  console.log("B: App")
 
   //an initial search variable will be set using a custom useSemiPersistentState hook
   //the hook gets the var from localStorage
