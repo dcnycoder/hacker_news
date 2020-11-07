@@ -3,7 +3,7 @@ import Item from './Item'
 
 
 //nested destructuring format: destructuredObj: {neededProperty}
-List = ({stories, removeStory, nested: {ownerName}, nested: {pet: {name}}}) =>
+const List = ({stories, removeStory, nested: {ownerName}, nested: {pet: {name}}}) =>
   //console.log('List spread: ', ...list)
   //console.log("STORIES: ", stories)
   console.log("B: List") || 
