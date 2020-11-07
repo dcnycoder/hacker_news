@@ -97,6 +97,9 @@ const App = () => {
   // const getAsyncStories = new Promise (resolve =>
   //   setTimeout(() => resolve(books), 3000)
   // )
+  const getSumComments = (stories) = {
+    
+  }
 
   const handleFetchStories = React.useCallback(() => {
         console.log("search in fetch stories: ", search)
