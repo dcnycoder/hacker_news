@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useCallback, useState} from 'react';
 import axios from 'axios'
 import logo from './logo.svg';
 import './App.css';
@@ -149,14 +149,16 @@ const App = () => {
   React.useEffect(() => handleFetchStories()
   , [handleFetchStories]) // end of React.useEffect
 
-  const removeStory = (id) => {
-    dispatchStories(
-      {
-        type: "REMOVE_STORY",
-        payload: id
-      }
-      )
-  }
+  const removeStory = useCallback(
+    (id) => {
+      dispatchStories(
+        {
+          type: "REMOVE_STORY",
+          payload: id
+        }
+        )
+    }, []
+  )
 
   const handleSearchInput = (event) => {
     console.log("New search term: ", event.target.value)
