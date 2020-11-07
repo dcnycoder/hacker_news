@@ -188,9 +188,10 @@ const App = () => {
           <p>Please wait... The application is loading...</p>
         ) : (
           <div>
-            <SearchForm search={search} sumComments={sumComments} labelName='Label Name' name='search' type='text' id='search' handleSearchInput={handleSearchInput}
+            <p>Total comments for all stories: {sumComments}</p>
+            <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' handleSearchInput={handleSearchInput}
               handleSearchSubmit={handleSearchSubmit}>
-            <p>Total comments for all stories: ${sumComments}</p>
+
             <Text/>
             </SearchForm>
             <List stories={stories.data} search={search} removeStory={removeStory} nested={nested}/>
