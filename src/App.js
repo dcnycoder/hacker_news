@@ -29,6 +29,7 @@ const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?query="
 
 const getSumComments = (stories) => {
   console.log("C")
+  console.log("Calculated comments: ", stories.reduce((acc, story) => acc + story.num_comments , 0))
   return stories.reduce((acc, story) => acc + story.num_comments , 0)
 }
 
@@ -50,7 +51,7 @@ const App = () => {
   const initialSearch = 'React'
   let [url, setUrl] = React.useState(API_ENDPOINT)
   let [search, setSearch] = useSemiPersistentState(initialSearch)
-  let [sumComments, setSumComments] = useState(0)
+  //let [sumComments, setSumComments] = useState(0)
 
   function useSemiPersistentState(initialSearch) {
     console.log("semipersistent state was fired! localStorage('search') is: ", localStorage.getItem('search'))
@@ -73,7 +74,11 @@ const App = () => {
         return {...state, search: state.search, isLoading: true}
       }
       
-      case "STORIES_FETCH_SUCCESS": return {...state, data: action.payload, sumComments: getSumComments(action.payload), isLoading: false, isError: false}
+      case "STORIES_FETCH_SUCCESS": {
+        let new_state = {...state, data: action.payload.data, sumComments: action.payload.sumComments, isLoading: false, isError: false}
+        console.log(`new_state: ${new_state.sumComments}`)
+        return new_state
+      }
 
       case "STORIES_FETCH_FAILURE": return {...state, isLoading: false, isError: action.payload}
 
@@ -117,7 +122,12 @@ const App = () => {
           console.log("Result: ", result)
           dispatchStories({
             type: "STORIES_FETCH_SUCCESS",
-            payload: result.data.hits
+            payload: {
+              data: result.data.hits,
+              sumComments: getSumComments(result.data.hits)
+            }
+            
+            
           })
         }
         catch {
@@ -188,7 +198,7 @@ const App = () => {
           <p>Please wait... The application is loading...</p>
         ) : (
           <div>
-            <p>Total comments for all stories: {sumComments}</p>
+            <p>Total comments for all stories: {stories.sumComments}</p>
             <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' handleSearchInput={handleSearchInput}
               handleSearchSubmit={handleSearchSubmit}>
 
