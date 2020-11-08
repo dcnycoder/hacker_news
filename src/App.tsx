@@ -3,9 +3,17 @@ import axios from 'axios'
 import logo from './logo.svg';
 import './App.css';
 import Text from './Text'
-
 import SearchForm from './Search'
 import List from './List'
+
+type Story = {
+  objectID: string;
+  url: string;
+  title: string;
+  author: string;
+  num_comments: number;
+  points: number;
+}
 
 // const books = [
 //   {
