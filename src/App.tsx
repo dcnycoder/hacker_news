@@ -53,7 +53,7 @@ const App = () => {
   let [search, setSearch] = useSemiPersistentState(initialSearch)
   //let [sumComments, setSumComments] = useState(0)
 
-  function useSemiPersistentState(initialSearch: string) {
+  function useSemiPersistentState(initialSearch: string): [string, (setSearch: string) => void] {
     console.log("semipersistent state was fired! localStorage('search') is: ", localStorage.getItem('search'))
     let [search, setSearch] = useState(localStorage.getItem('search')||initialSearch)
 
