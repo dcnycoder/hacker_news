@@ -4,7 +4,7 @@ import {Card, CardTitle, CardSubtitle, CardText, CardBody, CardImg, Button} from
 //WITH DESTRUCTURING:
 //const Item = ({title, url, author, num_comments, points, objectID, removeStory}) => {
 
-const Item = (story: Story, removeStory) => {
+const Item = (story, removeStory) => {
   // console.log("Title: ", title)
   // console.log("dismissProject: ", removeStory)
   return <Card>

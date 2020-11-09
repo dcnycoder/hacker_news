@@ -15,6 +15,8 @@ type Story = {
   points: number;
 }
 
+type Stories = Array<Story>
+
 // const books = [
 //   {
 //     title: "React",
