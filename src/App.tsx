@@ -14,8 +14,12 @@ type Story = {
   num_comments: number;
   points: number;
 }
-
 type Stories = Array<Story>
+type StoriesState = {
+  data: Array<Story>;
+  isLoading: boolean;
+  isError: boolean;
+}
 
 // const books = [
 //   {
@@ -77,7 +81,7 @@ const App = () => {
   console.log("SEARCH INITIALLY: ", search)
   let [nested, setNested] = useState(nestedObj)
 
-  const storiesReducer = (state, action) => {
+  const storiesReducer = (state: StoriesState, action: ) => {
     switch (action.type) {
       case "STORIES_FETCH_INIT": {
         console.log("FETCH INIT FIRED, state.search is: ", search)
