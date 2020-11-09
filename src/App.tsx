@@ -37,7 +37,7 @@ type Stories = Array<Story>
 // ]
 const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?query="
 
-const getSumComments = (stories) => {
+const getSumComments = (stories: Stories) => {
   console.log("C")
   console.log("Calculated comments: ", stories.reduce((acc, story) => acc + story.num_comments , 0))
   return stories.reduce((acc, story) => acc + story.num_comments , 0)
@@ -211,7 +211,6 @@ const App = () => {
             <p>Total comments for all stories: {stories.sumComments}</p>
             <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' handleSearchInput={handleSearchInput}
               handleSearchSubmit={handleSearchSubmit}>
-
             <Text/>
             </SearchForm>
             <List stories={stories.data} search={search} removeStory={removeStory} nested={nested}/>
