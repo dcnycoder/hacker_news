@@ -16,13 +16,14 @@ type Story = {
 }
 type Stories = Array<Story>
 type StoriesState = {
-  data: Array<Story>;
+  data: Stories;
+  search: string;
   isLoading: boolean;
   isError: boolean;
 }
 type StoriesAction = {
   type: string
-  payload: any
+  payload?: any
 }
 
 // const books = [
