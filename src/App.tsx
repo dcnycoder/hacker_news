@@ -20,6 +20,10 @@ type StoriesState = {
   isLoading: boolean;
   isError: boolean;
 }
+type StoriesAction = {
+  type: string
+  payload: any
+}
 
 // const books = [
 //   {
@@ -81,7 +85,7 @@ const App = () => {
   console.log("SEARCH INITIALLY: ", search)
   let [nested, setNested] = useState(nestedObj)
 
-  const storiesReducer = (state: StoriesState, action: ) => {
+  const storiesReducer = (state: StoriesState, action: StoriesAction) => {
     switch (action.type) {
       case "STORIES_FETCH_INIT": {
         console.log("FETCH INIT FIRED, state.search is: ", search)
