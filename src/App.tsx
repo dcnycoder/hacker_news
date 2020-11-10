@@ -21,10 +21,31 @@ type StoriesState = {
   isLoading: boolean;
   isError: boolean;
 }
-type StoriesAction = {
-  type: string
-  payload?: any
+interface StoriesFetchInitAction {
+  type: "STORIES_FETCH_INIT";
 }
+interface StoriesFetchSuccessAction {
+  type: "STORIES_FETCH_SUCCESS",
+  payload: {
+    data: Stories,
+    sumComments: number
+  }
+}
+interface StoriesFetchFailureAction {
+  type: "STORIES_FETCH_FAILURE",
+  payload: string
+}
+interface StoriesRemoveAction {
+  type: "REMOVE_STORY",
+  payload: string
+}
+
+type StoriesAction = 
+   | StoriesFetchInitAction
+   | StoriesFetchSuccessAction
+   | StoriesFetchFailureAction
+   | StoriesRemoveAction
+
 
 // const books = [
 //   {
@@ -86,11 +107,14 @@ const App = () => {
   console.log("SEARCH INITIALLY: ", search)
   let [nested, setNested] = useState(nestedObj)
 
-  const storiesReducer = (state: StoriesState, action: StoriesAction) => {
+  const storiesReducer = (
+    state: StoriesState, 
+    action: StoriesAction
+  ): any=> {
     switch (action.type) {
       case "STORIES_FETCH_INIT": {
         console.log("FETCH INIT FIRED, state.search is: ", search)
-        return {...state, search: state.search, isLoading: true}
+        return {...state, search: state.search, isLoading: true, isError: false}
       }
       
       case "STORIES_FETCH_SUCCESS": {
@@ -101,8 +125,8 @@ const App = () => {
 
       case "STORIES_FETCH_FAILURE": return {...state, isLoading: false, isError: action.payload}
 
-      case ("SET_STORIES"):
-        return action.payload
+      // case ("SET_STORIES"):
+      //   return action.payload
 
       case ("REMOVE_STORY"):
         return {...state, data: state.data.filter(elem => elem.objectID !== action.payload)}
@@ -112,7 +136,8 @@ const App = () => {
   }
 
   let [stories, dispatchStories] = React.useReducer(
-    storiesReducer, {data: [], isLoading: false, isError: false}
+    storiesReducer, 
+    {data: [], isLoading: false, isError: false}
   )
 
   // const getAsyncStories = () => {
@@ -145,14 +170,12 @@ const App = () => {
               data: result.data.hits,
               sumComments: getSumComments(result.data.hits)
             }
-            
-            
           })
         }
-        catch {
+        catch (error) {
           dispatchStories({
             type: "STORIES_FETCH_FAILURE",
-            //payload: error.message
+            payload: error.message
           })
         } // end of try/catch
       }      
@@ -194,13 +217,13 @@ const App = () => {
     }, []
   )
 
-  const handleSearchInput = (event) => {
+  const handleSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     console.log("New search term: ", event.target.value)
     setSearch(event.target.value)
     console.log("This.state.search: ", search)
   }
 
-  const handleSearchSubmit = (event) => {
+  const handleSearchSubmit = (event: ) => {
     event.preventDefault()
     setUrl(`${API_ENDPOINT}${search}`)
     console.log("URL after setURL: ", url)

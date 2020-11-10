@@ -1,6 +1,14 @@
 import React, {Component} from 'react'
 import Item from './Item'
 
+type Story = {
+  objectID: string;
+  url: string;
+  title: string;
+  author: string;
+  num_comments: number;
+  points: number;
+}
 
 //nested destructuring format: destructuredObj: {neededProperty}
 const List = React.memo(
