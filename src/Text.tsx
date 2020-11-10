@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Text = () => {
-    return "SOME TEXT"
+    return <>"SOME TEXT"</>
 }
-
 export default Text
