@@ -223,7 +223,7 @@ const App = () => {
     console.log("This.state.search: ", search)
   }
 
-  const handleSearchSubmit = (event: ) => {
+  const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setUrl(`${API_ENDPOINT}${search}`)
     console.log("URL after setURL: ", url)
