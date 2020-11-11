@@ -12,6 +12,10 @@ type Story = {
 
 //nested destructuring format: destructuredObj: {neededProperty}
 const List = React.memo(
+  // props desctructured like so: {stories, removeStory} means the same as: 
+  // List = (props) => 
+  // to use stories not like props.stories but just stories, props object gets
+  // desctructured right away
   ({stories, removeStory, nested: {ownerName}, nested: {pet: {name}}}) =>
   //console.log('List spread: ', ...list)
   //console.log("STORIES: ", stories)

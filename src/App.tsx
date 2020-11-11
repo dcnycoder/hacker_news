@@ -245,7 +245,8 @@ const App = () => {
               handleSearchSubmit={handleSearchSubmit}>
             <Text/>
             </SearchForm>
-            <List search={search} stories={stories.data}  removeStory={removeStory} nested={nested}/>
+            <List stories={stories.data}/>
+            {/* search={search} removeStory={removeStory} stories={stories.data} nested={nested}*/}
           </div>)}
     </div>
   )
