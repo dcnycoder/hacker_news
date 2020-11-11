@@ -1,33 +1,6 @@
 import React, {Component} from 'react'
 import Item from './Item'
-
-type Story = {
-  objectID: string;
-  url: string;
-  title: string;
-  author: string;
-  num_comments: number;
-  points: number;
-}
-type ListProps = {
-  stories: Array<Story>
-  search: string
-  removeStory: (id: string) => void
-  nested: {
-    ownerName: string
-    pet: {
-      name: string
-      age: number
-    }
-  }
-  // const nestedObj = {
-  //   ownerName: "Dennis",
-  //   pet: {
-  //     name: "Cody",
-  //     age: 5
-  //   }
-  // }
-}
+import {ListProps} from './types'
 
 //nested destructuring format: destructuredObj: {neededProperty}
 const List = React.memo(
