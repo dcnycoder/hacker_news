@@ -11,7 +11,7 @@ const List = React.memo(
   ({stories, removeStory, nested: {ownerName}, nested: {pet: {name}}} : ListProps)  =>
   //console.log('List spread: ', ...list)
   //console.log("STORIES: ", stories)
-  console.log("B: List") || 
+  // console.log("B: List") || 
   <div>
   <p>Name: {ownerName}</p>
   <p>Pet Name: {name}</p>

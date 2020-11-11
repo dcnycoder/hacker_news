@@ -30,7 +30,7 @@ export type ListProps = {
 
 export type ItemProps = {
   story: Story, 
-  removeStory: (id: number) => void
+  removeStory: (id: string) => void
 }
 
 interface StoriesFetchInitAction {
