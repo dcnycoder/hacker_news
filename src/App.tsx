@@ -6,87 +6,9 @@ import Text from './Text'
 import SearchForm from './Search'
 import List from './List'
 
-type Story = {
-  objectID: string;
-  url: string;
-  title: string;
-  author: string;
-  num_comments: number;
-  points: number;
-}
-type Stories = Array<Story>
-type StoriesState = {
-  data: Stories;
-  search: string;
-  isLoading: boolean;
-  isError: boolean;
-}
-type ListProps = {
-  stories: Array<Story>
-  search: string
-  removeStory: (id: string) => void
-  nested: {
-    ownerName: string
-    pet: {
-      name: string
-      age: number
-    }
-  }
+//IMPORT TYPES: 
+import {Story, Stories, StoriesState, StoriesAction, } from './types'
 
-  // const nestedObj = {
-  //   ownerName: "Dennis",
-  //   pet: {
-  //     name: "Cody",
-  //     age: 5
-  //   }
-  // }
-
-}
-
-interface StoriesFetchInitAction {
-  type: "STORIES_FETCH_INIT";
-}
-interface StoriesFetchSuccessAction {
-  type: "STORIES_FETCH_SUCCESS",
-  payload: {
-    data: Stories,
-    sumComments: number
-  }
-}
-interface StoriesFetchFailureAction {
-  type: "STORIES_FETCH_FAILURE",
-  payload: string
-}
-interface StoriesRemoveAction {
-  type: "REMOVE_STORY",
-  payload: string
-}
-
-type StoriesAction = 
-   | StoriesFetchInitAction
-   | StoriesFetchSuccessAction
-   | StoriesFetchFailureAction
-   | StoriesRemoveAction
-
-
-// const books = [
-//   {
-//     title: "React",
-//     url: "http://react.com",
-//     author: "Jordan Walke",
-//     num_comments: 3,
-//     points: 4,
-//     objectID: 0,
-//   },
-//   {
-//     title: "Redux",
-//     url: "www.redux.com",
-//     author: "Jordan Walke",
-//     num_comments: 8,
-//     points: 4.7,
-//     objectID: 1
-//   }
-// ]
 const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?query="
 
 const getSumComments = (stories: Stories) => {

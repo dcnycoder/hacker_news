@@ -1,20 +1,9 @@
 import React from 'react'
 import {Card, CardTitle, CardSubtitle, CardText, CardBody, CardImg, Button} from 'reactstrap'
-type Story = {
-  objectID: string;
-  url: string;
-  title: string;
-  author: string;
-  num_comments: number;
-  points: number;
-}
-
-type RemoveStory = {
-
-}
+import {Story, ItemProps} from './types'
 
 //const Item = ({title, url, author, num_comments, points, objectID, removeStory}) => {
-const Item = ({title, url, author, num_comments, points, objectID}: Story, removeStory: RemoveStory) => {
+const Item = ({title, url, author, num_comments, points, objectID}: Story, {removeStory}: ItemProps) => {
 
   // console.log("Title: ", title)
   // console.log("dismissProject: ", removeStory)
