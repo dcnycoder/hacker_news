@@ -21,6 +21,28 @@ type StoriesState = {
   isLoading: boolean;
   isError: boolean;
 }
+type ListProps = {
+  stories: Array<Story>
+  search: string
+  removeStory: (id: string) => void
+  nested: {
+    ownerName: string
+    pet: {
+      name: string
+      age: number
+    }
+  }
+
+  // const nestedObj = {
+  //   ownerName: "Dennis",
+  //   pet: {
+  //     name: "Cody",
+  //     age: 5
+  //   }
+  // }
+
+}
+
 interface StoriesFetchInitAction {
   type: "STORIES_FETCH_INIT";
 }
@@ -245,7 +267,7 @@ const App = () => {
               handleSearchSubmit={handleSearchSubmit}>
             <Text/>
             </SearchForm>
-            <List stories={stories.data}/>
+            <List stories={stories.data} search={search} removeStory={removeStory} nested={nested}/>
             {/* search={search} removeStory={removeStory} stories={stories.data} nested={nested}*/}
           </div>)}
     </div>
