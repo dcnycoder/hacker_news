@@ -19,7 +19,14 @@
     "noEmit": true,
     "jsx": "react"
   },
-  "include": [
-    "src"
-  ]
+    "types": [
+      "node",
+      "webpack",
+      "react",
+      "react-dom",
+      "reactstrap"
+    ],
+    "include": [
+      "src"
+    ],  
 }
