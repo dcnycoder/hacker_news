@@ -7,7 +7,9 @@ import SearchForm from './Search'
 import List from './List'
 
 //IMPORT TYPES: 
-import {Story, Stories, StoriesState, StoriesAction, } from './types'
+import {Stories, StoriesState, StoriesAction, } from './types'
+
+
 
 const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?query="
 
@@ -32,7 +34,7 @@ const App = () => {
   //the hook gets the var from localStorage
   //the hook returns a state and setState as a normal useState hook would
 
-  const initialSearch = 'React'
+  const initialSearch = ''
   let [url, setUrl] = React.useState(API_ENDPOINT)
   let [search, setSearch] = useSemiPersistentState(initialSearch)
   //let [sumComments, setSumComments] = useState(0)
@@ -54,7 +56,7 @@ const App = () => {
   const storiesReducer = (
     state: StoriesState, 
     action: StoriesAction
-  ): any=> {
+  ): any => {
     switch (action.type) {
       case "STORIES_FETCH_INIT": {
         console.log("FETCH INIT FIRED, state.search is: ", search)
@@ -95,11 +97,17 @@ const App = () => {
   //   setTimeout(() => resolve(books), 3000)
   // )
 
-
-  const handleFetchStories = React.useCallback(() => {
+// ? MAIN FUNCTION THAT GETS FIRED UP EVERY TIME URL CHANGES:
+// ? THIS FUNC CHANGES ON URL CHANGES AND TRIGGERS THE USEEFFECT BELOW
+// ? THAT GETS TRIGGERED ON handleFetchStories CHANGE
+// ? Could have been done directly but the point was to demonstrate
+// ? how useCallback() memoizes the function (similarly to how
+// ? useRef memoizes the value)
+  
+const handleFetchStories = React.useCallback(() => {
         console.log("search in fetch stories: ", search)
     
-        if (!search) return
+        //if (!search) return
         dispatchStories({type: "STORIES_FETCH_INIT"})
         
 
@@ -161,7 +169,7 @@ const App = () => {
     }, []
   )
 
-  const handleSearchInput = (event: React.SyntheticEvent<HTMLInputElement>) => {
+  const handleSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     console.log("New search term: ", event.target.value)
     setSearch(event.target.value)
     console.log("This.state.search: ", search)
