@@ -2,7 +2,9 @@ import React from 'react'
 import {Card, CardTitle, CardSubtitle, CardText, CardBody, CardImg, Button} from 'reactstrap'
 import {Story, ItemProps} from './types'
 
+//WORKED: IN PLACE DESTRUCTURING:
 //const Item = ({title, url, author, num_comments, points, objectID, removeStory}) => {
+//DIDN'T WORK: 
 //const Item = ({title, url, author, num_comments, points, objectID}: Story, {removeStory}: ItemProps) => {
 const Item = ({story, removeStory}: ItemProps) => {
   let {title, url, author, num_comments, points, objectID} = story
