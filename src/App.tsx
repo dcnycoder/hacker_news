@@ -161,7 +161,7 @@ const App = () => {
     }, []
   )
 
-  const handleSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchInput = (event: React.SyntheticEvent<HTMLInputElement>) => {
     console.log("New search term: ", event.target.value)
     setSearch(event.target.value)
     console.log("This.state.search: ", search)
