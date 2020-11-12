@@ -17,7 +17,7 @@ const List = React.memo(
   <p>Pet Name: {name}</p>
   <ul>{stories.map(story => 
     //<Item key={story.objectID} {...story} removeStory={removeStory}/>
-    <Item key={story.objectID} story={story} removeStory={removeStory}/>  
+    <Item key={story.objectID} removeStory={removeStory} story={story} />  
   )}</ul>
   </div>
 ) 

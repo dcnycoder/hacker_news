@@ -16,7 +16,7 @@ export type StoriesState = {
 }
 
 export type ListProps = {
-  stories: Array<Story>
+  stories: Stories
   search: string
   removeStory: (id: string) => void
   nested: {
