@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card, CardTitle, CardSubtitle, CardText, CardBody, CardImg, Button, ListGroupItem} from 'reactstrap'
+import {Card, CardTitle, CardSubtitle, CardText, CardBody, CardImg, Button} from 'reactstrap'
 import {ListGroup} from 'react-bootstrap'
 import {Story, ItemProps} from './types'
 
@@ -11,7 +11,7 @@ const Item = ({story, removeStory}: ItemProps) => {
   let {title, url, author, num_comments, points, objectID} = story
   // console.log("Title: ", title)
   // console.log("dismissProject: ", removeStory)
-  return <ListGroupItem tag="a" href={url}>{title}</ListGroupItem>
+  return <ListGroup.Item as="li">{title}</ListGroup.Item>
 
   //   <ListGroup>
   //   <ListGroupItem disabled tag="a" href="#">Cras justo odio</ListGroupItem>

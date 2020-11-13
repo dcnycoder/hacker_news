@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Item from './Item'
-import {ListGroup, ListGroupItem} from 'reactstrap'
+//import {ListGroup, ListGroupItem} from 'reactstrap'
+import {ListGroup} from 'react-bootstrap'
 import {ListProps} from './types'
 
 //nested destructuring format: destructuredObj: {neededProperty}
@@ -17,7 +18,7 @@ const List = React.memo(
   // <div>
   // <p>Name: {ownerName}</p>
   // <p>Pet Name: {name}</p>
-  <ListGroup>
+  <ListGroup as="ul">
     {stories.map((story) => 
       <Item key={story.objectID} story={story} removeStory={removeStory} />
     )}
