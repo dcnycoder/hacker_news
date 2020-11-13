@@ -1,5 +1,6 @@
 import React from 'react'
 import {Card, CardTitle, CardSubtitle, CardText, CardBody, CardImg, Button, ListGroupItem} from 'reactstrap'
+import {ListGroup} from 'react-bootstrap'
 import {Story, ItemProps} from './types'
 
 //WORKED: IN PLACE DESTRUCTURING:
