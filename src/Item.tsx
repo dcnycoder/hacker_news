@@ -11,11 +11,7 @@ const Item = ({story, removeStory}: ItemProps) => {
   let {title, url, author, num_comments, points, objectID} = story
   // console.log("Title: ", title)
   // console.log("dismissProject: ", removeStory)
-  return <ListGroup.Item as="li">{title}</ListGroup.Item>
-
-  //   <ListGroup>
-  //   <ListGroupItem disabled tag="a" href="#">Cras justo odio</ListGroupItem>
-  // </ListGroup>
+  return <ListGroup.Item as="li"><a href={url}>{title}</a></ListGroup.Item>
 }
 
 export default Item
