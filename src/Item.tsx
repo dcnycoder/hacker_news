@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card, CardTitle, CardSubtitle, CardText, CardBody, CardImg, Button} from 'reactstrap'
+import {Card, CardTitle, CardSubtitle, CardText, CardBody, CardImg, Button, ListGroupItem} from 'reactstrap'
 import {Story, ItemProps} from './types'
 
 //WORKED: IN PLACE DESTRUCTURING:
@@ -10,7 +10,16 @@ const Item = ({story, removeStory}: ItemProps) => {
   let {title, url, author, num_comments, points, objectID} = story
   // console.log("Title: ", title)
   // console.log("dismissProject: ", removeStory)
-  return <Card>
+  return <ListGroupItem tag="a" href={url}>{title}</ListGroupItem>
+
+  //   <ListGroup>
+  //   <ListGroupItem disabled tag="a" href="#">Cras justo odio</ListGroupItem>
+  // </ListGroup>
+}
+
+export default Item
+
+{/* <Card>
   <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" />
   <CardBody>
     <CardTitle></CardTitle>
@@ -26,7 +35,4 @@ const Item = ({story, removeStory}: ItemProps) => {
     </CardText>
     <Button onClick={() => removeStory(objectID)}>REMOVE STORY</Button>
   </CardBody> 
-</Card>
-}
-
-export default Item
+</Card> */}
