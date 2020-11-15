@@ -180,10 +180,10 @@ const handleFetchStories = React.useCallback(() => {
 
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>{message}</p>
-      </header>
+      </header> */}
   {stories.isError && <p>Something went wrong: {stories.isError}</p>}
       { (stories.isLoading && !stories.isError)? (
           <p>Please wait... The application is loading...</p>
