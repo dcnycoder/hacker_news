@@ -5,6 +5,7 @@ import './App.css';
 import Text from './Text'
 import SearchForm from './Search'
 import List from './List'
+import Grid from '/grid'
 
 //IMPORT TYPES: 
 import {Stories, StoriesState, StoriesAction, } from './types'
