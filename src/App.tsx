@@ -43,8 +43,8 @@ const App = () => {
     console.log("semipersistent state was fired! localStorage('search') is: ", localStorage.getItem('search'))
     let [search, setSearch] = useState(localStorage.getItem('search')||initialSearch)
 
-    //sets the localStorage search item on initial render and re-render (because useSemiPersistent state gets called
-    //on every render)
+    //? sets the localStorage search item on initial render and re-render (because useSemiPersistent state gets called
+    //? on every render)
     React.useEffect(() => localStorage.setItem('search', search), [url])
 
     return [search, setSearch]
@@ -70,9 +70,6 @@ const App = () => {
       }
 
       case "STORIES_FETCH_FAILURE": return {...state, isLoading: false, isError: action.payload}
-
-      // case ("SET_STORIES"):
-      //   return action.payload
 
       case ("REMOVE_STORY"):
         return {...state, data: state.data.filter(elem => elem.objectID !== action.payload)}
@@ -198,7 +195,6 @@ const handleFetchStories = React.useCallback(() => {
             <Text/>
             </SearchForm>
             <List stories={stories.data} search={search} removeStory={removeStory} nested={nested}/>
-            {/* search={search} removeStory={removeStory} stories={stories.data} nested={nested}*/}
           </div>)}
     </div>
   )
