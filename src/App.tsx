@@ -1,7 +1,7 @@
 import React, {Component, useCallback, useState} from 'react';
 import axios from 'axios'
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css'
 import Text from './Text'
 import SearchForm from './Search'
 import List from './List'
@@ -181,26 +181,24 @@ const handleFetchStories = React.useCallback(() => {
 
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{message}</p>
-      </header> */}
-  {stories.isError && <p>Something went wrong: {stories.isError}</p>}
+      {stories.isError && <p>Something went wrong: {stories.isError}</p>}
       { (stories.isLoading && !stories.isError)? (
           <p>Please wait... The application is loading...</p>
-        ) : (
+        ) : ( 
           <div>
-            <p>Total comments for all stories: {stories.sumComments}</p>
+          <p>Total comments for all stories: {stories.sumComments}</p>
             <Grid/>
             <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' handleSearchInput={handleSearchInput}
               handleSearchSubmit={handleSearchSubmit}>
             <Text/>
             </SearchForm>
             <List stories={stories.data} search={search} removeStory={removeStory} nested={nested}/>
-          </div>)}
-    </div>
-  )
-}
+          </div>
+        )}
+      </div>
+
+  ) //end of App return()
+  }// end of App()
 
 export default App
 
