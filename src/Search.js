@@ -5,7 +5,7 @@ function Search({search='React', labelName, name, id, type, handleSearchInput, h
   console.log("Children: ", children)
   return (
     <div name='searchForm'>
-      <Form onSubmit={handleSearchSubmit}>
+      <Form className='w-50' onSubmit={handleSearchSubmit}>
           <FormGroup name='search'>
           <Label for={labelName}>{()=>children()} </Label>
             <Input type={type} name={name} id={id} defaultValue={search} onChange={handleSearchInput} placeholder="" autoFocus/>

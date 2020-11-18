@@ -8,8 +8,8 @@ const Grid = () => {
   // style={{color: "red"}}
   return <Container className='w-25'>
     <Row className="position-relative w-100 align-items-left">
-      <Col>1 of 2</Col>
-      <Col>2 of 2</Col>
+      <Col className="col-md-3 border">1 of 2</Col>
+      <Col className="col-md-3">2 of 2</Col>
     </Row>
     <Row>
       <Col className="justify-content-start">1 of 3</Col>
