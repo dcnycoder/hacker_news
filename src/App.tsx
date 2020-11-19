@@ -5,6 +5,7 @@ import './App.css'
 import Text from './Text'
 import SearchForm from './Search'
 import List from './List'
+import Navigation from './Navigation'
 import Grid from './Grid'
 
 //IMPORT TYPES: 
@@ -186,8 +187,9 @@ const handleFetchStories = React.useCallback(() => {
           <p>Please wait... The application is loading...</p>
         ) : ( 
           <div>
-          <p>Total comments for all stories: {stories.sumComments}</p>
-            <Grid/>
+            <Navigation />
+            <p>Total comments for all stories: {stories.sumComments}</p>
+            {/* <Grid/> */}
             <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' handleSearchInput={handleSearchInput}
               handleSearchSubmit={handleSearchSubmit}>
             <Text/>
