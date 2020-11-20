@@ -1,8 +1,10 @@
 import React from 'react'
 import {Nav, Navbar, NavDropdown, Form, FormControl, Button} from 'react-bootstrap'
+import './css/navigation.css'
+
 
 const Navigation = () => {
-  return <Navbar bg="light" expand="lg">
+  return <Navbar bg="light" expand="lg" className='fixed-top'>
   <Navbar.Brand href="#home">Navigation Bar</Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
