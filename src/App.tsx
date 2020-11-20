@@ -9,7 +9,7 @@ import Navigation from './Navigation'
 import Footer from './Footer'
 import Grid from './Grid'
 
-//IMPORT TYPES: 
+//? IMPORT TYPES: 
 import {Stories, StoriesState, StoriesAction, } from './types'
 
 
@@ -189,12 +189,14 @@ const handleFetchStories = React.useCallback(() => {
         ) : ( 
           <div>
             <Navigation />
+
+            <Text/>
+
+            <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' handleSearchInput={handleSearchInput}
+                handleSearchSubmit={handleSearchSubmit} />
             <p>Total comments for all stories: {stories.sumComments}</p>
             {/* <Grid/> */}
-            <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' handleSearchInput={handleSearchInput}
-              handleSearchSubmit={handleSearchSubmit}>
-            <Text/>
-            </SearchForm>
+
             <List stories={stories.data} search={search} removeStory={removeStory} nested={nested}/>
             <Footer/>
           </div>

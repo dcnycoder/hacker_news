@@ -1,11 +1,12 @@
 import React from 'react'
 import {Nav, Navbar, NavDropdown, Form, FormControl, Button} from 'react-bootstrap'
 import './css/navigation.css'
+import SearchForm from './Search'
 
 
 const Navigation = () => {
-  return <Navbar bg="light" expand="lg" className='fixed-top'>
-  <Navbar.Brand href="#home">Navigation Bar</Navbar.Brand>
+  return <Navbar bg="light" expand="lg" className='sticky-top'>
+  <Navbar.Brand href="#home">Hacker News</Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
     <Nav  >
@@ -19,10 +20,13 @@ const Navigation = () => {
         <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
       </NavDropdown>
     </Nav>
-    <Form inline>
+    <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' handleSearchInput={handleSearchInput}
+              handleSearchSubmit={handleSearchSubmit}>
+    </SearchForm>
+    {/* <Form inline>
       <FormControl type="text" placeholder="Search" className="mr-sm-2" />
       <Button variant="outline-success">Search</Button>
-    </Form>
+    </Form> */}
   </Navbar.Collapse>
 </Navbar>
 }

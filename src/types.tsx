@@ -33,6 +33,16 @@ export type ItemProps = {
   removeStory: (id: string) => void
 }
 
+export type SearchFormProps = {
+  search: string,
+  labelName: string,
+  name: string,
+  type: string,
+  id: string,
+  handleSearchInput: () => {},
+  children?: any
+}
+
 interface StoriesFetchInitAction {
   type: "STORIES_FETCH_INIT";
 }
