@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap'
 
-function Search({search='React', labelName, name, id, type, handleSearchInput, handleSearchSubmit, children}) {
+import {SearchFormProps} from './types'
+
+function Search({search='React', labelName, name, id, type, handleSearchInput, handleSearchSubmit, children}: SearchFormProps) {
   console.log("Children: ", children)
   return (
     <div name='searchForm'>
