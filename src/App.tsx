@@ -6,6 +6,7 @@ import Text from './Text'
 import SearchForm from './Search'
 import List from './List'
 import Navigation from './Navigation'
+import Footer from './Footer'
 import Grid from './Grid'
 
 //IMPORT TYPES: 
@@ -195,6 +196,7 @@ const handleFetchStories = React.useCallback(() => {
             <Text/>
             </SearchForm>
             <List stories={stories.data} search={search} removeStory={removeStory} nested={nested}/>
+            <Footer/>
           </div>
         )}
       </div>
