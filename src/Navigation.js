@@ -5,7 +5,7 @@ import SearchForm from './Search'
 import {NavigationProps} from './types'
 
 
-const Navigation = (props: NavigationProps, search: ) => {
+const Navigation = (props: NavigationProps) => {
   return <Navbar bg="light" expand="lg" className='sticky-top'>
   <Navbar.Brand href="#home">Hacker News</Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />

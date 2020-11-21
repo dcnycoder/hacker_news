@@ -9,8 +9,9 @@ import Navigation from './Navigation'
 import Footer from './Footer'
 import Grid from './Grid'
 
+
 //? IMPORT TYPES: 
-import {Stories, StoriesState, StoriesAction, } from './types'
+import {Stories, StoriesState, StoriesAction, AppContext} from './types'
 
 
 
@@ -23,6 +24,7 @@ const getSumComments = (stories: Stories) => {
 }
 
 const App = () => {
+  const AppContext = React.createContext<AppContext>({})
   const message = "HACKER NEWS"
   const nestedObj = {
     ownerName: "Dennis",

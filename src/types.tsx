@@ -1,3 +1,8 @@
+export type AppContext = {
+  color?: string;
+  size?: number;
+}
+
 export type Story = {
   objectID: string;
   url: string;
