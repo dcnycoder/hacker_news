@@ -184,7 +184,13 @@ const handleFetchStories = React.useCallback(() => {
   }
 
   return (
-    <div className="App">
+    <AppContext.Provider value={
+      {
+        color: 'red',
+        size: 11
+      }
+    }>
+      <div className="App">
       {stories.isError && <p>Something went wrong: {stories.isError}</p>}
       { (stories.isLoading && !stories.isError)? (
           <p>Please wait... The application is loading...</p>
@@ -203,6 +209,8 @@ const handleFetchStories = React.useCallback(() => {
           </div>
         )}
       </div>
+    </AppContext.Provider>
+
 
   ) //end of App return()
   }// end of App()
