@@ -42,7 +42,7 @@ export type SearchFormProps = {
   search: string,
   labelName: string,
   name: string,
-  type: string,
+  type: "text",
   id: string,
   handleSearchInput: (event: React.ChangeEvent<HTMLInputElement>) => void,
   handleSearchSubmit: (event: React.FormEvent<HTMLFormElement>) => void, 
