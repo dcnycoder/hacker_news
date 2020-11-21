@@ -188,12 +188,11 @@ const handleFetchStories = React.useCallback(() => {
           <p>Please wait... The application is loading...</p>
         ) : ( 
           <div>
-            <Navigation />
-
-            <Text/>
-
-            <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' handleSearchInput={handleSearchInput}
+            <Navigation>
+              <Text/>
+              <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' handleSearchInput={handleSearchInput}
                 handleSearchSubmit={handleSearchSubmit} />
+            </Navigation>
             <p>Total comments for all stories: {stories.sumComments}</p>
             {/* <Grid/> */}
 

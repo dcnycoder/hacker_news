@@ -2,9 +2,10 @@ import React from 'react'
 import {Nav, Navbar, NavDropdown, Form, FormControl, Button} from 'react-bootstrap'
 import './css/navigation.css'
 import SearchForm from './Search'
+import {NavigationProps} from './types'
 
 
-const Navigation = () => {
+const Navigation = (props: NavigationProps, search: ) => {
   return <Navbar bg="light" expand="lg" className='sticky-top'>
   <Navbar.Brand href="#home">Hacker News</Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />

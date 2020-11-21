@@ -39,7 +39,12 @@ export type SearchFormProps = {
   name: string,
   type: string,
   id: string,
-  handleSearchInput: () => {},
+  handleSearchInput: (event: React.ChangeEvent<HTMLInputElement>) => void,
+  handleSearchSubmit: (event: React.FormEvent<HTMLFormElement>) => void, 
+  children?: any
+}
+
+export type NavigationProps = {
   children?: any
 }
 

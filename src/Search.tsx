@@ -6,7 +6,7 @@ import {SearchFormProps} from './types'
 function Search({search='React', labelName, name, id, type, handleSearchInput, handleSearchSubmit, children}: SearchFormProps) {
   console.log("Children: ", children)
   return (
-    <div name='searchForm'>
+    <div pseudo-name='searchForm'>
       <Form className='w-50' onSubmit={handleSearchSubmit}>
           <FormGroup name='search'>
           <Label for={labelName}>{()=>children()} </Label>
