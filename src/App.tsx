@@ -183,6 +183,9 @@ const handleFetchStories = React.useCallback(() => {
     console.log("URL after setURL: ", url)
   }
 
+  //?AppContext.Provider has a mandatory value attribute
+  //? that has a form of an object. It centrally holds 'the state'
+  //? and passes it to other components to consume
   return (
     <AppContext.Provider value={
       {
