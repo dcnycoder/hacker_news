@@ -5,14 +5,14 @@ import './App.css'
 import Text from './Text'
 import SearchForm from './Search'
 import List from './List'
-//import Navigation from './Navigation'
+//import Navigation from './Navigation
 import Footer from './Footer'
+import TempContextConsumer from './TempContextConsumer'
 import Grid from './Grid'
 
 
 //? IMPORT TYPES: 
-import {Stories, StoriesState, StoriesAction, AppContext} from './types'
-
+import {Stories, StoriesState, StoriesAction, AppContextType} from './types'
 
 
 const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?query="
@@ -24,7 +24,13 @@ const getSumComments = (stories: Stories) => {
 }
 
 const App = () => {
-  const AppContext = React.createContext<AppContext>({})
+  const AppContext = React.createContext<AppContextType>({
+    color: 'red',
+    size: 11
+  })
+
+  const AppContextConsumer = AppContext.Consumer
+
   const message = "HACKER NEWS"
   const nestedObj = {
     ownerName: "Dennis",
@@ -187,12 +193,7 @@ const handleFetchStories = React.useCallback(() => {
   //? that has a form of an object. It centrally holds 'the state'
   //? and passes it to other components to consume
   return (
-    <AppContext.Provider value={
-      {
-        color: 'red',
-        size: 11
-      }
-    }>
+
       <div className="App">
       {stories.isError && <p>Something went wrong: {stories.isError}</p>}
       { (stories.isLoading && !stories.isError)? (
@@ -202,6 +203,14 @@ const handleFetchStories = React.useCallback(() => {
             {/* <Navigation>
             </Navigation> */}
             <Text/>
+            <AppContext.Provider value={
+              {
+                color: 'red',
+                size: 11
+              }
+            }>
+            <TempContextConsumer/>
+            </AppContext.Provider>
               <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' handleSearchInput={handleSearchInput}
                 handleSearchSubmit={handleSearchSubmit} />
             <p>Total comments for all stories: {stories.sumComments}</p>
@@ -212,7 +221,7 @@ const handleFetchStories = React.useCallback(() => {
           </div>
         )}
       </div>
-    </AppContext.Provider>
+
 
 
   ) //end of App return()

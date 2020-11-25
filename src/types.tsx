@@ -1,4 +1,4 @@
-export type AppContext = {
+export interface AppContextType {
   color?: string;
   size?: number;
 }
