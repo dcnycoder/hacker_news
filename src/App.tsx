@@ -7,25 +7,15 @@ import SearchForm from './Search'
 import List from './List'
 //import Navigation from './Navigation
 import Footer from './Footer'
-//import TempContextConsumer from './TempContextConsumer'
+import TempContextConsumer from './TempContextConsumer'
 import Grid from './Grid'
+//? IMPORT TYPES: 
 import {Stories, StoriesState, StoriesAction, AppContextType} from './types'
 
-const AppContext = React.createContext<AppContextType>({
+const AppContext = React.createContext<Partial<AppContextType>>({
   color: 'red',
   size: 11
 })
-
-const TempContextConsumer: React.FC = () => {
-  const {color, size} = React.useContext(AppContext);
-  return (
-    <>
-      {color}
-    </>
-  )
-}
-
-//? IMPORT TYPES: 
 
 const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?query="
 
