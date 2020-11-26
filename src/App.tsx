@@ -9,6 +9,7 @@ import List from './List'
 import Footer from './Footer'
 //import TempContextConsumer from './TempContextConsumer'
 import Grid from './Grid'
+import {Stories, StoriesState, StoriesAction, AppContextType} from './types'
 
 const AppContext = React.createContext<AppContextType>({
   color: 'red',
@@ -16,18 +17,15 @@ const AppContext = React.createContext<AppContextType>({
 })
 
 const TempContextConsumer: React.FC = () => {
-  const value = React.useContext(AppContext);
+  const {color, size} = React.useContext(AppContext);
   return (
-    <AppContext.Consumer>
-      <div>
-        {value[0]}
-      </div>
-    </AppContext.Consumer>
+    <>
+      {color}
+    </>
   )
 }
 
 //? IMPORT TYPES: 
-import {Stories, StoriesState, StoriesAction, AppContextType} from './types'
 
 const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?query="
 
