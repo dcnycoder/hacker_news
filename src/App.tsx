@@ -7,13 +7,27 @@ import SearchForm from './Search'
 import List from './List'
 //import Navigation from './Navigation
 import Footer from './Footer'
-import TempContextConsumer from './TempContextConsumer'
+//import TempContextConsumer from './TempContextConsumer'
 import Grid from './Grid'
 
+const AppContext = React.createContext<AppContextType>({
+  color: 'red',
+  size: 11
+})
+
+const TempContextConsumer: React.FC = () => {
+  const value = React.useContext(AppContext);
+  return (
+    <AppContext.Consumer>
+      <div>
+        {value[0]}
+      </div>
+    </AppContext.Consumer>
+  )
+}
 
 //? IMPORT TYPES: 
 import {Stories, StoriesState, StoriesAction, AppContextType} from './types'
-
 
 const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?query="
 
@@ -23,19 +37,12 @@ const getSumComments = (stories: Stories) => {
   return stories.reduce((acc, story) => acc + story.num_comments , 0)
 }
 
-const AppContext = React.createContext<AppContextType>({
-  color: 'red',
-  size: 11
-})
-
 const sampleContext: AppContextType = {
     color: 'red',
     size: 11
 }
 
 export const App = () => {
-
-
   //const AppContextConsumer = AppContext.Consumer
 
   const message = "HACKER NEWS"
@@ -211,7 +218,7 @@ const handleFetchStories = React.useCallback(() => {
             </Navigation> */}
             <Text/>
             <AppContext.Provider value={sampleContext}>
-            <TempContextConsumer/>
+              <TempContextConsumer/>
             </AppContext.Provider>
               <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' handleSearchInput={handleSearchInput}
                 handleSearchSubmit={handleSearchSubmit} />
