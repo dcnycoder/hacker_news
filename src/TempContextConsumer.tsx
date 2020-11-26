@@ -3,16 +3,16 @@ import AppContext from './App'
 import {AppContextType} from './types'
 import AppContextConsumer from './App'
 
-const TempContextConsumer = () => {
-  //const value = React.useContext(AppContext);
+const TempContextConsumer: React.FC = () => {
+  const value = React.useContext(AppContext);
   return (
-    <AppContextConsumer>
-      {(AppContext: AppContextType) => {
-        <div>
-          color: {AppContext.color}
-        </div>
-      }}
-    </AppContextConsumer>
+    // <AppContext>
+    //   {(AppContext: AppContextType) => {
+    //     <div>
+    //       color: {AppContext.color}
+    //     </div>
+    //   }}
+    // </AppContext>
   )
 
 }

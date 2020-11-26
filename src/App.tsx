@@ -23,13 +23,20 @@ const getSumComments = (stories: Stories) => {
   return stories.reduce((acc, story) => acc + story.num_comments , 0)
 }
 
-const App = () => {
-  const AppContext = React.createContext<AppContextType>({
+const AppContext = React.createContext<AppContextType>({
+  color: 'red',
+  size: 11
+})
+
+const sampleContext: AppContextType = {
     color: 'red',
     size: 11
-  })
+}
 
-  const AppContextConsumer = AppContext.Consumer
+export const App = () => {
+
+
+  //const AppContextConsumer = AppContext.Consumer
 
   const message = "HACKER NEWS"
   const nestedObj = {
@@ -203,12 +210,7 @@ const handleFetchStories = React.useCallback(() => {
             {/* <Navigation>
             </Navigation> */}
             <Text/>
-            <AppContext.Provider value={
-              {
-                color: 'red',
-                size: 11
-              }
-            }>
+            <AppContext.Provider value={sampleContext}>
             <TempContextConsumer/>
             </AppContext.Provider>
               <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' handleSearchInput={handleSearchInput}
