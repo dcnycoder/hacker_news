@@ -10,7 +10,7 @@ import Footer from './Footer'
 import TempContextConsumer from './TempContextConsumer'
 import Grid from './Grid'
 //? IMPORT TYPES: 
-import {Stories, StoriesState, StoriesAction, AppContextType} from './types'
+import {Stories, StoriesState, StoriesAction, AppContextType, ConsumerType} from './types'
 
 const {Provider, Consumer} = React.createContext<Partial<AppContextType>>({
   color: 'red',

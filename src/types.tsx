@@ -3,7 +3,7 @@ export interface AppContextType {
   size?: number;
 }
 
-export type Consumer = {
+export type ConsumerType = {
   children: any
 }
 

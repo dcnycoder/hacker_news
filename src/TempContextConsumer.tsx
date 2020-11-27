@@ -1,6 +1,6 @@
 import React from 'react'
 import AppContext from './App'
-import {AppContextType} from './types'
+import {AppContextType, ConsumerType} from './types'
 import Consumer from './App'
 
 function TempContextConsumer(): JSX.Element {
