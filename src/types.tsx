@@ -1,4 +1,4 @@
-export interface AppContextType {
+export interface StoreType {
   color?: string;
   size?: number;
 }

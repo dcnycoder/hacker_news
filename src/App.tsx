@@ -9,14 +9,9 @@ import List from './List'
 import Footer from './Footer'
 import TempContextConsumer from './TempContextConsumer'
 import Grid from './Grid'
+import Store from './Store'
 //? IMPORT TYPES: 
-import {Stories, StoriesState, StoriesAction, AppContextType, ConsumerType} from './types'
-
-const {Provider, Consumer} = React.createContext<Partial<AppContextType>>({
-  color: 'red',
-  size: 11
-})
-console.log("AppContext Provider, Consumer: ", Provider, Consumer)
+import {Stories, StoriesState, StoriesAction, StoreType} from './types'
 
 const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?query="
 
@@ -26,7 +21,7 @@ const getSumComments = (stories: Stories) => {
   return stories.reduce((acc, story) => acc + story.num_comments , 0)
 }
 
-const sampleContext: AppContextType = {
+const sampleContext: StoreType = {
     color: 'red',
     size: 11
 }
@@ -206,7 +201,7 @@ const handleFetchStories = React.useCallback(() => {
             {/* <Navigation>
             </Navigation> */}
             <Text/>
-            <Provider value={sampleContext}>
+            <Provider>
               <TempContextConsumer/>
             </Provider>
               <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' handleSearchInput={handleSearchInput}
