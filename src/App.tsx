@@ -12,10 +12,11 @@ import Grid from './Grid'
 //? IMPORT TYPES: 
 import {Stories, StoriesState, StoriesAction, AppContextType} from './types'
 
-const AppContext = React.createContext<Partial<AppContextType>>({
+const {Provider, Consumer} = React.createContext<Partial<AppContextType>>({
   color: 'red',
   size: 11
 })
+console.log("AppContext: ", AppContext)
 
 const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?query="
 
@@ -30,7 +31,7 @@ const sampleContext: AppContextType = {
     size: 11
 }
 
-export const App = () => {
+export const App = (): JSX.Element => {
   //const AppContextConsumer = AppContext.Consumer
 
   const message = "HACKER NEWS"

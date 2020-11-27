@@ -3,7 +3,7 @@ import AppContext from './App'
 import {AppContextType} from './types'
 import AppContextConsumer from './App'
 
-function TempContextConsumer() {
+function TempContextConsumer(): JSX.Element {
   const {color, size} = React.useContext(AppContext);
   return (
     <>
