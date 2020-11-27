@@ -3,6 +3,10 @@ export interface AppContextType {
   size?: number;
 }
 
+export type Consumer = {
+  children: any
+}
+
 export type Story = {
   objectID: string;
   url: string;

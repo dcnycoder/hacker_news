@@ -16,7 +16,7 @@ const {Provider, Consumer} = React.createContext<Partial<AppContextType>>({
   color: 'red',
   size: 11
 })
-console.log("AppContext: ", AppContext)
+console.log("AppContext Provider, Consumer: ", Provider, Consumer)
 
 const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?query="
 
@@ -206,9 +206,9 @@ const handleFetchStories = React.useCallback(() => {
             {/* <Navigation>
             </Navigation> */}
             <Text/>
-            <AppContext.Provider value={sampleContext}>
+            <Provider value={sampleContext}>
               <TempContextConsumer/>
-            </AppContext.Provider>
+            </Provider>
               <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' handleSearchInput={handleSearchInput}
                 handleSearchSubmit={handleSearchSubmit} />
             <p>Total comments for all stories: {stories.sumComments}</p>
