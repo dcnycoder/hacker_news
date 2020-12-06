@@ -3,7 +3,7 @@ import {Nav, Navbar, NavDropdown, Form, FormControl, Button} from 'react-bootstr
 import './css/navigation.css'
 
 const Navigation = ({children}) => {
-  return <Navbar bg="light" expand="lg" className='fixed-top'>
+  return <Navbar bg="light" expand="lg" sticky="top">
   <Navbar.Brand href="#home">HACKER NEWS</Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
