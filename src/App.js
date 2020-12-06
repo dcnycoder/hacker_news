@@ -10,9 +10,7 @@ import Footer from './Footer'
 import Grid from './Grid'
 
 //IMPORT TYPES: 
-import {Stories, StoriesState, StoriesAction, } from './types'
-
-
+//import {Stories, StoriesState, StoriesAction, } from './types'
 
 const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?query="
 
