@@ -7,7 +7,7 @@ import {Story, ItemProps} from './types'
 //const Item = ({title, url, author, num_comments, points, objectID, removeStory}) => {
 //DIDN'T WORK: 
 //const Item = ({title, url, author, num_comments, points, objectID}: Story, {removeStory}: ItemProps) => {
-const Item = ({story, removeStory}: ItemProps) => {
+const Item = ({story, removeStory}) => {
   let {title, url, author, num_comments, points, objectID} = story
   // console.log("Title: ", title)
   // console.log("dismissProject: ", removeStory)

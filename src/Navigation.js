@@ -4,7 +4,7 @@ import './css/navigation.css'
 import Search from './Search'
 
 
-const Navigation = () => {
+const Navigation = ({children}) => {
   return <Navbar bg="light" expand="lg" className='fixed-top'>
   <Navbar.Brand href="#home">Navigation Bar</Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -20,11 +20,12 @@ const Navigation = () => {
         <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
       </NavDropdown>
     </Nav>
-    // <Form inline>
-    //   <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-    //   <Button variant="outline-success">Search</Button>
-    // </Form>
-    <Search />
+    {children}
+     {/* <Form inline>
+       <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+       <Button variant="outline-success">Search</Button>
+     </Form> */}
+
   </Navbar.Collapse>
 </Navbar>
 }
