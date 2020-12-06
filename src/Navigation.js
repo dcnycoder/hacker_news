@@ -1,12 +1,10 @@
 import React from 'react'
 import {Nav, Navbar, NavDropdown, Form, FormControl, Button} from 'react-bootstrap'
 import './css/navigation.css'
-import Search from './Search'
-
 
 const Navigation = ({children}) => {
   return <Navbar bg="light" expand="lg" className='fixed-top'>
-  <Navbar.Brand href="#home">Navigation Bar</Navbar.Brand>
+  <Navbar.Brand href="#home">HACKER NEWS</Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
     <Nav  >
