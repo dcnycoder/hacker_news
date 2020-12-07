@@ -2,11 +2,10 @@ import React from 'react'
 import Store from './Store'
 
 const AppNew = () => {
-  let {storiesState, storiesReducer} = React.useContext(Store)
-
+  let {Store, storiesReducer} = React.useContext(Store)
   return (
     <div name='appNew'>
-      {storiesState.search}
+      {Store.search}
     </div>
   )
 }
