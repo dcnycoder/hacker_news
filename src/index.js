@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {Store, storiesReducer} from './Store'
+import {Store} from './Store'
 import App from './App'
 import AppNew from './AppNew'
 import * as serviceWorker from './serviceWorker';
@@ -10,8 +10,25 @@ ReactDOM.render(
   <React.StrictMode>
     <Store.Provider value={
       {
-        store,
-        storiesReducer
+        storiesState: {
+          stories: {},
+          search: 'search',
+          isLoading: false,
+          isError: false,
+        },
+        storiesReducer: function (state, action) {
+          switch(action.type) {
+            case "STORIES_FETCH_INIT": {
+              return {...state, isLoading: true, isError: false}
+            }
+            case "STORIES_FETCH_SUCCESS": {
+              return {...state, stories: action.load, isLoading: false, isError: false}
+            }
+            case "STORIES_FETCH_FAILURE": {
+              return {...state, isLoading: false, isError: true}
+            }
+          }
+        }
       }
     }>
       <AppNew />

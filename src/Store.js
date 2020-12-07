@@ -7,16 +7,16 @@ export let Store = React.createContext({
     isLoading: false,
     isError: false,
   },
-  storiesReducer = (state, action) => {
+  storiesReducer: function (state, action) {
     switch(action.type) {
       case "STORIES_FETCH_INIT": {
-        return {...store, isLoading: true, isError: false}
+        return {...state, isLoading: true, isError: false}
       }
       case "STORIES_FETCH_SUCCESS": {
-        return {...store, stories: action.load, isLoading: false, isError: false}
+        return {...state, stories: action.load, isLoading: false, isError: false}
       }
       case "STORIES_FETCH_FAILURE": {
-        return {...store, isLoading: false, isError: true}
+        return {...state, isLoading: false, isError: true}
       }
     }
   }

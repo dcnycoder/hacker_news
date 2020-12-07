@@ -1,11 +1,12 @@
 import React from 'react'
+import Store from './Store'
 
 const AppNew = () => {
-  let {store, storiesReducer} = useContext(value)
+  let {storiesState, storiesReducer} = React.useContext(Store)
 
   return (
     <div name='appNew'>
-      store.isLoading
+      {storiesState.search}
     </div>
   )
 }
