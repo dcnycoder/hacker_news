@@ -1,6 +1,6 @@
 import React from 'react'
 
-let Store = React.createContext({
+let store = React.createContext({
   stories: {},
   search: '',
   isLoading: false,
@@ -10,13 +10,13 @@ let Store = React.createContext({
 const storiesReducer = (state, action) => {
   switch(action.type) {
     case "STORIES_FETCH_INIT": {
-      return Store
+      return {...store, isLoading: true, isError: false}
     }
     case "STORIES_FETCH_SUCCESS": {
-      return {...Store, stories: action.load, isLoading: false, isError: false}
+      return {...store, stories: action.load, isLoading: false, isError: false}
     }
     case "STORIES_FETCH_FAILURE": {
-      return {Store, isLoading: false, isError: true}
+      return {...store, isLoading: false, isError: true}
     }
   }
 }
