@@ -1,12 +1,10 @@
 import React from 'react'
 
-export let Store = React.createContext({
-  storiesState: {
-    stories: {},
-    search: '',
-    isLoading: false,
-    isError: false,
-  },
-})
-
-export default Store
+let initialState = {
+  stories: {},
+  search: '',
+  isLoading: false,
+  isError: false,
+}
+export let [state, dispatch] = React.useReducer(initialState)
+export let Store = React.createContext()

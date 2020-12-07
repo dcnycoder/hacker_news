@@ -1,5 +1,3 @@
-import React from 'react'
-
 const StoriesReducer = (state, action) => {
   switch(action.type) {
     case "STORIES_FETCH_INIT": {

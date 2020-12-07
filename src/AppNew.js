@@ -2,10 +2,12 @@ import React from 'react'
 import Store from './Store'
 
 const AppNew = () => {
-  let {Store, storiesReducer} = React.useContext(Store)
+  let {state, storiesReducer} = React.useContext(Store)
+  React.useEffect()
+
   return (
     <div name='appNew'>
-      {Store.search}
+      {state.search}
     </div>
   )
 }
