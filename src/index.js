@@ -9,12 +9,7 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Store.Provider value={{
-      state,
-      dispatch
-    }}>
       <AppNew />
-    </Store.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

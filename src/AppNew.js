@@ -1,15 +1,28 @@
 import React from 'react'
 import {Store} from './Store'
+import StoriesReducer from './StoriesReducer'
+
+
 
 const AppNew = () => {
-  let {state} = React.useContext(Store)
-  React.useEffect()
+  let initialState = {
+    stories: {},
+    search: '',
+    isLoading: false,
+    isError: false,
+  }
+  let Store = React.createContext()
+  let [state, dispatch] = React.useReducer(StoriesReducer, initialState)
+  console.log("state/dispatch: ", state, dispatch)
 
   return (
-
-    <div name='appNew'>
-      {state.search}
-    </div>
+    <Store.Provider value = {{
+      state,
+      dispatch
+    }}>
+      <div name='appNew'>
+      </div>
+    </Store.Provider>
   )
 }
 
