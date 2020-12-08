@@ -1,6 +1,6 @@
 import React from 'react'
-import {Store} from './Store'
-import StoriesReducer from './StoriesReducer'
+import {Store} from '../Store'
+import StoriesReducer from '../StoriesReducer'
 
 const AppNew = () => {
   let initialState = {
@@ -11,7 +11,9 @@ const AppNew = () => {
   }
   let Store = React.createContext()
   let [state, dispatch] = React.useReducer(StoriesReducer, initialState)
-  console.log("state/dispatch: ", state, dispatch)
+  React.useEffect(()=> {
+    
+  }, [])
 
   return (
     <Store.Provider value = {{

@@ -4,7 +4,7 @@ import './index.css';
 import {Store, state, dispatch} from './Store'
 import StoriesReducer from './StoriesReducer'
 import App from './App'
-import AppNew from './NewApp/AppNew'
+import AppNew from './AppNew'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
