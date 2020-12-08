@@ -2,8 +2,6 @@ import React from 'react'
 import {Store} from './Store'
 import StoriesReducer from './StoriesReducer'
 
-
-
 const AppNew = () => {
   let initialState = {
     stories: {},
