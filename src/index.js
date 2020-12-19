@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {Store, state, dispatch} from './Store'
+import {Store, state, dispatch} from './NewApp/Store'
 import StoriesReducer from './StoriesReducer'
-import App from './App'
+//import App from './App'
 import AppNew from './NewApp/AppNew'
 import * as serviceWorker from './serviceWorker';
 

@@ -4,7 +4,7 @@ const StoriesReducer = (state, action) => {
       return {...state, isLoading: true, isError: false}
     }
     case "STORIES_FETCH_SUCCESS": {
-      return {...state, stories: action.load, isLoading: false, isError: false}
+      return {...state, stories: action.payload, isLoading: false, isError: false}
     }
     case "STORIES_FETCH_FAILURE": {
       return {...state, isLoading: false, isError: true}
