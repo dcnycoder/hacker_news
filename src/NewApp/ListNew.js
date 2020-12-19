@@ -9,16 +9,19 @@ function ListNew() {
   let {state} = React.useContext(Store) 
   console.log("state", state)
   return (
-  //<Store.Consumer>
-    <ListGroup>
-      {
-        state.isError
-        // state.stories.map(elem => (
-        //   <ItemNew/>
-        // ))
-      }
-    </ListGroup>
-  //</Store.Consumer>
+  <Store.Consumer>
+    {value => 
+      <div>{value.state.search}</div>
+    }
+    {/* // <ListGroup>
+    //   {
+    //     state.isError
+    //     // state.stories.map(elem => (
+    //     //   <ItemNew/>
+    //     // ))
+    //   }
+    // </ListGroup> */}
+  </Store.Consumer>
 
 )}
 

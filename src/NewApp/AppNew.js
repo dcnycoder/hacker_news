@@ -11,7 +11,7 @@ export let Store = React.createContext()
 const AppNew = () => {
   let initialState = {
     stories: [],
-    search: '',
+    search: 'React',
     isLoading: false,
     isError: false,
   }
