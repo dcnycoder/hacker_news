@@ -6,21 +6,19 @@ import ItemNew from './ItemNew'
 
 
 function ListNew() {
-  let {state} = React.useContext(Store) 
-  console.log("state", state)
+  //let {state} = React.useContext(Store) 
+  //console.log("state", value.state)
   return (
   <Store.Consumer>
     {value => 
-      <div>{value.state.search}</div>
-    }
-    {/* // <ListGroup>
-    //   {
-    //     state.isError
-    //     // state.stories.map(elem => (
-    //     //   <ItemNew/>
-    //     // ))
-    //   }
-    // </ListGroup> */}
+    (<ListGroup>
+      {
+        value.state.stories.map(elem => (
+          // <ItemNew/>
+          <div>{elem.title}</div>
+        ))
+      }
+    </ListGroup>)}
   </Store.Consumer>
 
 )}
