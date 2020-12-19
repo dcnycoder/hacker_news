@@ -22,7 +22,7 @@ const AppNew = () => {
       .then((response) => {
         console.log(response.data.hits)
         dispatch({
-          type: "DATA_FETCH_SUCCESS",
+          type: "STORIES_FETCH_SUCCESS",
           payload: response.data.hits
         })
       })
