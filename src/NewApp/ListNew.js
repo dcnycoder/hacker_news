@@ -5,17 +5,24 @@ import {Store} from './AppNew'
 import ItemNew from './ItemNew'
 
 
-function ListNew() {
-  //TRY NESTED DESTRUCTURING HERE: 
-  let {state} = React.useContext(Store)
-  //Try useMemo() to prevent unnecessary re-renders
-  return (
-    <ListGroup>
-      {state.stories.map(story => 
-          <ItemNew key={story.objectID} title={story.title} url={story.url}/>
-      )}
-    </ListGroup>
-  )
-}
+
+const ListNew = React.memo(
+
+  //memo takes a function, memoizes the result
+  () => {
+    //Destructured format: {innerDestrObj: {neededProp}} = outerDestructuredObj
+    let {state: {stories}} = React.useContext(Store)
+    console.log("stories: ", stories)
+    //Try useMemo() to prevent unnecessary re-renders
+    return (
+      <ListGroup>
+        {stories.map(story => 
+            <ItemNew key={story.objectID} title={story.title} url={story.url}/>
+        )}
+      </ListGroup>
+    )
+  }
+)
+
 
 export default ListNew
