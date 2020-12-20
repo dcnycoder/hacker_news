@@ -12,13 +12,14 @@ const AppNew = () => {
   let initialState = {
     stories: [],
     search: 'React',
+    url: API_ENDPOINT+search,
     isLoading: false,
     isError: false,
   }
 
   let [state, dispatch] = React.useReducer(StoriesReducer, initialState)
   React.useEffect(()=> {
-    axios.get(API_ENDPOINT+state.search)
+    axios.get(url)
       .then((response) => {
         console.log("Got the stories: ", response.data.hits)
         dispatch({
@@ -29,7 +30,7 @@ const AppNew = () => {
       .catch((error) => {
         console.error(error)
       })
-  }, []) //on URL change
+  }, [state.url]) //on URL change
     return (
       <Store.Provider value = {{
           state,

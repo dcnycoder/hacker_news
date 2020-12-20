@@ -9,6 +9,9 @@ const StoriesReducer = (state, action) => {
     case "STORIES_FETCH_FAILURE": {
       return {...state, isLoading: false, isError: true}
     }
+    case "CHANGE_SEARCH": {
+      return {...state, search: action.payload}
+    }
   }
 }
 
