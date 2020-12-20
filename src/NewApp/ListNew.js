@@ -1,7 +1,7 @@
 import React from 'react'
 import {ListGroup} from 'react-bootstrap'
-//import Store from './Store'
-import {Store} from './AppNew'
+import Store from './Store'
+//import {Store} from './AppNew'
 import ItemNew from './ItemNew'
 
 //note React.useMemo returns a memoized component that only

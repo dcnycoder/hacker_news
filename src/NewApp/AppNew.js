@@ -1,12 +1,12 @@
 import React from 'react'
-//import Store from './Store'
+import Store from './Store'
 import StoriesReducer from '../StoriesReducer'
 import axios from 'axios'
 import ListNew from './ListNew'
 //import { render } from '@testing-library/react'
 
 const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?query="
-export let Store = React.createContext()
+//export let Store = React.createContext()
 
 const AppNew = () => {
   let initialState = {
