@@ -4,6 +4,11 @@ import {ListGroup} from 'react-bootstrap'
 import {Store} from './AppNew'
 import ItemNew from './ItemNew'
 
+//note React.useMemo returns a memoized component that only
+//note re-renders when the variable in the array changes
+//note When this component gets called in the parents,
+//note the ListNew func executes automatically and returns
+//note this memoized component
 const ListNew = () => {
   let {state: {stories}} = React.useContext(Store)
   const memoizedList = React.useMemo(() => {
