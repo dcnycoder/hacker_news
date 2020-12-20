@@ -6,21 +6,16 @@ import ItemNew from './ItemNew'
 
 
 function ListNew() {
-  //let {state} = React.useContext(Store) 
-  //console.log("state", value.state)
+  //TRY NESTED DESTRUCTURING HERE: 
+  let {state} = React.useContext(Store)
+  //Try useMemo() to prevent unnecessary re-renders
   return (
-  <Store.Consumer>
-    {value => 
-    (<ListGroup>
-      {
-        value.state.stories.map(elem => (
-          // <ItemNew/>
-          <div>{elem.title}</div>
-        ))
-      }
-    </ListGroup>)}
-  </Store.Consumer>
-
-)}
+    <ListGroup>
+      {state.stories.map(story => 
+          <ItemNew key={story.objectID} title={story.title} url={story.url}/>
+      )}
+    </ListGroup>
+  )
+}
 
 export default ListNew
