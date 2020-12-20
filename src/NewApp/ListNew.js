@@ -4,16 +4,10 @@ import {ListGroup} from 'react-bootstrap'
 import {Store} from './AppNew'
 import ItemNew from './ItemNew'
 
-
-
-const ListNew = React.memo(
-
-  //memo takes a function, memoizes the result
-  () => {
-    //Destructured format: {innerDestrObj: {neededProp}} = outerDestructuredObj
-    let {state: {stories}} = React.useContext(Store)
-    console.log("stories: ", stories)
-    //Try useMemo() to prevent unnecessary re-renders
+const ListNew = () => {
+  let {state: {stories}} = React.useContext(Store)
+  const memoizedList = React.useMemo(() => {
+    console.log("stories inside: ", stories)
     return (
       <ListGroup>
         {stories.map(story => 
@@ -21,8 +15,24 @@ const ListNew = React.memo(
         )}
       </ListGroup>
     )
-  }
-)
-
+  }, [stories])
+  return memoizedList
+}
 
 export default ListNew
+
+  // No memoization: 
+// {
+//   let {state} =  React.useContext(Store)
+//   let {stories} = state
+//   console.log("stories inside: ", stories)
+//   return (
+//     <ListGroup>
+//       {stories.map(story => 
+//           <ItemNew key={story.objectID} title={story.title} url={story.url}/>
+//       )}
+//     </ListGroup>
+//   )
+// }
+
+

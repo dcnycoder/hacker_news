@@ -20,7 +20,7 @@ const AppNew = () => {
   React.useEffect(()=> {
     axios.get(API_ENDPOINT+state.search)
       .then((response) => {
-        console.log(response.data.hits)
+        console.log("Got the stories: ", response.data.hits)
         dispatch({
           type: "STORIES_FETCH_SUCCESS",
           payload: response.data.hits
