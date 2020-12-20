@@ -29,7 +29,7 @@ const AppNew = () => {
       .catch((error) => {
         console.error(error)
       })
-  }, [])
+  }, []) //on URL change
     return (
       <Store.Provider value = {{
           state,

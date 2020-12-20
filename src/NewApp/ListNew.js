@@ -12,7 +12,6 @@ import ItemNew from './ItemNew'
 const ListNew = () => {
   let {state: {stories}} = React.useContext(Store)
   const memoizedList = React.useMemo(() => {
-    console.log("stories inside: ", stories)
     return (
       <ListGroup>
         {stories.map(story => 
