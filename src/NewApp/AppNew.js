@@ -2,6 +2,7 @@ import React from 'react'
 import Store from './Store'
 import StoriesReducer from '../StoriesReducer'
 import axios from 'axios'
+import SearchNew from './SearchNew'
 import ListNew from './ListNew'
 //import { render } from '@testing-library/react'
 
@@ -12,14 +13,14 @@ const AppNew = () => {
   let initialState = {
     stories: [],
     search: 'React',
-    url: API_ENDPOINT+search,
+    url: API_ENDPOINT,
     isLoading: false,
     isError: false,
   }
 
   let [state, dispatch] = React.useReducer(StoriesReducer, initialState)
   React.useEffect(()=> {
-    axios.get(url)
+    axios.get(state.url)
       .then((response) => {
         console.log("Got the stories: ", response.data.hits)
         dispatch({
@@ -37,6 +38,7 @@ const AppNew = () => {
           dispatch
       }}>
         <div className='App'>
+          <SearchNew />
           <ListNew />
         </div>
       </Store.Provider>
