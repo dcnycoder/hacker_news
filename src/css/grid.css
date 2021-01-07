@@ -1,9 +1,9 @@
 .col {
-  background-color: yellow;
+  /* background-color: yellow; */
   border: solid black 1px;
 }
 
 .row {
-  border: 1px red dotted;
+  /* border: 1px red dotted; */
   height: 100px;
 }

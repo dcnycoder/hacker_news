@@ -2,8 +2,10 @@ import React from 'react'
 import Store from './Store'
 import StoriesReducer from '../StoriesReducer'
 import axios from 'axios'
+import NavigationNew from './NavigationNew'
 import SearchNew from './SearchNew'
 import ListNew from './ListNew'
+import {Container, Row, Col} from 'react-bootstrap'
 //import { render } from '@testing-library/react'
 
 const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?query="
@@ -37,10 +39,20 @@ const AppNew = () => {
           state,
           dispatch
       }}>
-        <div className='App'>
-          <SearchNew />
-          <ListNew />
-        </div>
+        <Container fluid className="App">
+        {/* <div className='App'> */}
+          <Row>
+            <NavigationNew>
+              <SearchNew />
+            </NavigationNew>
+            {/* <Col><SearchNew /></Col> */}
+          </Row>
+          <Row>
+            <Col className="col-3"><ListNew /></Col>
+            <Col className="col-9"><iframe name='full_story' border='1px'></iframe></Col>
+            
+          </Row>
+        </Container>
       </Store.Provider>
     )
 

@@ -5,7 +5,7 @@ const ItemNew = ({title, url}) => {
   console.log(title)
   return (
       <ListGroup.Item as="li">
-        <a href={url}>{title}</a>
+        <a href={url} target='full_story'>{title}</a>
       </ListGroup.Item>
   )
 }

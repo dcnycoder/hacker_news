@@ -10,14 +10,21 @@ import ItemNew from './ItemNew'
 //note the ListNew func executes automatically and returns
 //note this memoized component
 const ListNew = () => {
-  let {state: {stories}} = React.useContext(Store)
+  let {state: {stories, isLoading, isError}} = React.useContext(Store)
   const memoizedList = React.useMemo(() => {
     return (
-      <ListGroup>
-        {stories.map(story => 
-            <ItemNew key={story.objectID} title={story.title} url={story.url}/>
-        )}
-      </ListGroup>
+      <div className='ListNew'>
+        {(isError) && <p>Something went wrong: {stories.isError}</p>}
+        {(!isError && isLoading)? (<p>The stories are loading</p>)
+         :
+         (<ListGroup>
+          {stories.map(story => 
+              <ItemNew key={story.objectID} title={story.title} url={story.url}/>
+          )}
+        </ListGroup>)
+        }
+      </div>
+      // {isLoading? <p>The news are loading...</p> : }
     )
   }, [stories])
   return memoizedList
