@@ -1,7 +1,6 @@
 import React from 'react'
 import {ListGroup} from 'react-bootstrap'
 import Store from './Store'
-//import {Store} from './AppNew'
 import ItemNew from './ItemNew'
 
 //note React.useMemo returns a memoized component that only
@@ -12,21 +11,22 @@ import ItemNew from './ItemNew'
 const ListNew = () => {
   let {state: {stories, isLoading, isError}} = React.useContext(Store)
   const memoizedList = React.useMemo(() => {
+    console.log("State in ListNew: ", stories, isLoading, isError)
     return (
       <div className='ListNew'>
         {(isError) && <p>Something went wrong: {stories.isError}</p>}
-        {(!isError && isLoading)? (<p>The stories are loading</p>)
-         :
-         (<ListGroup>
-          {stories.map(story => 
-              <ItemNew key={story.objectID} title={story.title} url={story.url}/>
-          )}
-        </ListGroup>)
+        {(!isError && isLoading)? 
+          (<p>The news are loading...</p>)
+          :
+          (<ListGroup>
+            {stories.map(story => 
+                <ItemNew key={story.objectID} title={story.title} url={story.url}/>
+            )}
+          </ListGroup>)
         }
       </div>
-      // {isLoading? <p>The news are loading...</p> : }
     )
-  }, [stories])
+  }, [stories, isError, isLoading])
   return memoizedList
 }
 
@@ -45,5 +45,3 @@ export default ListNew
 //     </ListGroup>
 //   )
 // }
-
-

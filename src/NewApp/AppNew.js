@@ -22,6 +22,8 @@ const AppNew = () => {
 
   let [state, dispatch] = React.useReducer(StoriesReducer, initialState)
   React.useEffect(()=> {
+    dispatch({type: "STORIES_FETCH_INIT"})
+    console.log("State after stories_fetch_init: ", state)
     setTimeout(() => {
       axios.get(state.url)
       .then((response) => {
@@ -37,28 +39,33 @@ const AppNew = () => {
     }, 3000)
 
   }, [state.url]) //on URL change
-    return (
+  console.log("isLoading, isError: ", state.isLoading, state.isError)
+  
+  // OLD RETURN
+  return (
       <Store.Provider value = {{
           state,
           dispatch
       }}>
         <Container fluid className="App">
-        {/* <div className='App'> */}
-          <Row>
+          {/* {(state.isLoading && !state.isError)?           
+            <div>Stories are loading...</div>
+            : */}
+            <div>
+            <Row>
             <NavigationNew>
               <SearchNew />
             </NavigationNew>
-            {/* <Col><SearchNew /></Col> */}
-          </Row>
-          <Row>
+              </Row>
+              <Row>
             <Col className="col-3"><ListNew /></Col>
-            <Col className="col-9"><iframe name='full_story' border='1px'></iframe></Col>
-            
-          </Row>
+            <Col className="col-9"><iframe name='full_story' border='1px'></iframe></Col>  
+            </Row>
+          </div> 
+        {/* } */}
         </Container>
       </Store.Provider>
     )
-
 }
 
 export default AppNew
