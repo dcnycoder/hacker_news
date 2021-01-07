@@ -1,11 +1,12 @@
 import React from 'react'
 import {Nav, Navbar, NavDropdown, Form, FormControl, Button} from 'react-bootstrap'
 import SearchNew from './SearchNew'
+import '../css/grid.css'
 
 
 const NavigationNew = ({children}) => {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="lg" className="w-100 navbar">
       <Navbar.Brand href="#home">HACKER NEWS</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
@@ -20,14 +21,14 @@ const NavigationNew = ({children}) => {
             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
           </NavDropdown>
         </Nav>
-        {/* <Form inline> */}
-          {/* <FormControl type="text" placeholder="Search" className="mr-sm-2" /> */}
+        <Form inline>
+          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
           {/* {children} */}
           
-          {/* <Button variant="outline-success">Search</Button> */}
-        {/* </Form> */}
+          <Button variant="outline-success">Search</Button>
+        </Form>
       </Navbar.Collapse>
-      <SearchNew />
+      {/* <SearchNew /> */}
     </Navbar>
   )
 }

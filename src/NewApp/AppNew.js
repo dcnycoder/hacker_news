@@ -47,21 +47,19 @@ const AppNew = () => {
           state,
           dispatch
       }}>
-        <Container fluid className="App">
+        <Container fluid className="App" className="border">
           {/* {(state.isLoading && !state.isError)?           
             <div>Stories are loading...</div>
             : */}
-            <div>
+            
             <Row>
             <NavigationNew>
               <SearchNew />
             </NavigationNew>
-              </Row>
-              <Row>
-            <Col className="col-3"><ListNew /></Col>
-            <Col className="col-9"><iframe name='full_story' border='1px'></iframe></Col>  
             </Row>
-          </div> 
+            <Row>
+              <Col className="col-5"><ListNew /></Col>
+            </Row>
         {/* } */}
         </Container>
       </Store.Provider>

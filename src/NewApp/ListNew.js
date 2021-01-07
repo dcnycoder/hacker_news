@@ -32,7 +32,7 @@ const ListNew = () => {
 
 export default ListNew
 
-  // No memoization: 
+// No memoization: 
 // {
 //   let {state} =  React.useContext(Store)
 //   let {stories} = state
