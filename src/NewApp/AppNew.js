@@ -22,7 +22,8 @@ const AppNew = () => {
 
   let [state, dispatch] = React.useReducer(StoriesReducer, initialState)
   React.useEffect(()=> {
-    axios.get(state.url)
+    setTimeout(() => {
+      axios.get(state.url)
       .then((response) => {
         console.log("Got the stories: ", response.data.hits)
         dispatch({
@@ -33,6 +34,8 @@ const AppNew = () => {
       .catch((error) => {
         console.error(error)
       })
+    }, 3000)
+
   }, [state.url]) //on URL change
     return (
       <Store.Provider value = {{
