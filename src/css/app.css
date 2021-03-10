@@ -2,6 +2,12 @@ body {
   margin: 0px;
 }
 
+/* NAVIGATION STYLES: */
+.top-nav {
+  background-color: yellow;
+  height: 100px;
+}
+
 .App {
   background-color: red;
   text-align: center;

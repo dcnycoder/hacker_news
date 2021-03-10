@@ -8,7 +8,7 @@ import ItemNew from './ItemNew'
 //note When this component gets called in the parents,
 //note the ListNew func executes automatically and returns
 //note this memoized component
-const ListNew = () => {
+const List = () => {
   let {state: {stories, isLoading, isError}} = React.useContext(Store)
   const memoizedList = React.useMemo(() => {
     console.log("State in ListNew: ", stories, isLoading, isError)
@@ -30,7 +30,7 @@ const ListNew = () => {
   return memoizedList
 }
 
-export default ListNew
+export default List
 
 // No memoization: 
 // {
