@@ -2,6 +2,7 @@ import React from 'react'
 import {Card, CardTitle, CardSubtitle, CardText, CardBody, CardImg, Button} from 'reactstrap'
 import {ListGroup} from 'react-bootstrap'
 import {Story, ItemProps} from './types'
+import "./css/list.css"
 
 //WORKED: IN PLACE DESTRUCTURING:
 //const Item = ({title, url, author, num_comments, points, objectID, removeStory}) => {

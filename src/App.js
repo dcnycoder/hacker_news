@@ -1,7 +1,7 @@
 import React, {Component, useCallback, useState} from 'react';
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './App.css'
+//import './css/app.css'
 import Text from './Text'
 import SearchForm from './Search'
 import List from './List'

@@ -1,4 +1,9 @@
+body {
+  margin: 0px;
+}
+
 .App {
+  background-color: red;
   text-align: center;
 }
 

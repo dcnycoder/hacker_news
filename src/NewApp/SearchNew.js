@@ -8,6 +8,7 @@ import {Form, FormGroup, Label, Input, Button} from 'reactstrap'
 const SearchNew = () => {
   let {state, dispatch} = React.useContext(Store)
   const onSearchChange = (event) => {
+    console.log("search new fired")
     console.log("payload: ", event.target.value)
     dispatch({
       type: "CHANGE_SEARCH",

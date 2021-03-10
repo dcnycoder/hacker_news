@@ -1,3 +1,4 @@
+import '../css/app.css'
 import React from 'react'
 import Store from './Store'
 import StoriesReducer from '../StoriesReducer'
@@ -51,12 +52,11 @@ const AppNew = () => {
           {/* {(state.isLoading && !state.isError)?           
             <div>Stories are loading...</div>
             : */}
-            
-            <Row>
+        
             <NavigationNew>
               <SearchNew />
             </NavigationNew>
-            </Row>
+    
             <Row>
               <Col className="col-5"><ListNew /></Col>
             </Row>
