@@ -6,7 +6,11 @@ import SearchNew from './SearchNew'
 function Navigation() {
   return (
     <div className='top-nav'>
-
+      <div className='nav-left'>
+        <div className='logo'>HACKER NEWS</div>
+        <div className='search'>SEARCH</div>
+      </div>
+      <div className='nav-right'>LOGIN</div>
     </div>
   )
 }

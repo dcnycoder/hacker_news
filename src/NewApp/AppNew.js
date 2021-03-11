@@ -50,6 +50,9 @@ const AppNew = () => {
         <div className='app'>
           <Navigation />
           <List />
+          {/* <div className='list'>
+            List
+          </div> */}
         </div>
       </Store.Provider>
     )
