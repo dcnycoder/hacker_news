@@ -18,6 +18,13 @@ const StoriesReducer = (state, action) => {
       console.log("SET_URL reached")
       return {...state, url: API_ENDPOINT+action.payload}
     }
+    case "ADD_TO_HISTORY": {
+      console.log("Add to history reached")
+      if (action.payload in state.searchHistory) {
+        searchHistory[action.payload] += 1
+      }
+      else searchHistory[action.payload] = 1
+    }
   }
 }
 

@@ -22,6 +22,7 @@ const AppNew = () => {
     url: API_ENDPOINT,
     isLoading: false,
     isError: false,
+    searchHistory: {}
   }
 
   let [state, dispatch] = React.useReducer(StoriesReducer, initialState)
