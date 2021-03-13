@@ -12,6 +12,13 @@ const Search = () => {
     })
   }
   
+  const onSearchSubmit = (event) => {
+    event.preventDefault()
+    dispatch({
+      type: "SET_URL",
+      payload: state.search
+    })
+  }
 
   return <form id='search' onSubmit={onSearchSubmit}>
     {/* <label>Search news: </label> */}
