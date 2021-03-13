@@ -38,7 +38,7 @@ const AppNew = () => {
         dispatch({
           type: "STORIES_FETCH_SUCCESS",
           payload: response.data.hits.filter(story=>{
-            return story.title != null
+            return story.title != null && story.url!=null
           })
         })
       })
