@@ -3,12 +3,12 @@ import {Nav, Navbar, NavDropdown, Form, FormControl, Button} from 'react-bootstr
 import SearchNew from './SearchNew'
 
 
-function Navigation() {
+function Navigation({children}) {
   return (
     <div className='top-nav'>
       <div className='nav-left'>
         <div className='logo'>HACKER NEWS</div>
-        <div className='search'>SEARCH</div>
+        <div className='search'>{children}</div>
       </div>
       <div className='nav-right'>LOGIN</div>
     </div>

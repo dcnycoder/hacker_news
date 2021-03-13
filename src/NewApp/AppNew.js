@@ -4,7 +4,9 @@ import Store from './Store'
 import StoriesReducer from '../StoriesReducer'
 import axios from 'axios'
 import Navigation from './Navigation'
-import SearchNew from './SearchNew'
+import Footer from './Footer'
+import Search from './Search'
+// import SearchNew from './SearchNew'
 import List from './List'
 import {Container, Row, Col} from 'react-bootstrap'
 import { render } from '@testing-library/react'
@@ -29,10 +31,15 @@ const AppNew = () => {
     setTimeout(() => {
       axios.get(state.url)
       .then((response) => {
-        console.log("Got the stories: ", response.data.hits)
+        //console.log("Got the stories: ", response.data.hits)
+        console.log("Filtered stories: ", response.data.hits.filter(story=>{
+          return story.title!=null
+        }));
         dispatch({
           type: "STORIES_FETCH_SUCCESS",
-          payload: response.data.hits
+          payload: response.data.hits.filter(story=>{
+            return story.title != null
+          })
         })
       })
       .catch((error) => {
@@ -49,7 +56,11 @@ const AppNew = () => {
       }}>
         <div className='app'>
           <Navigation />
-          <List />
+          <List>
+            <Search />
+          </List>
+
+          <Footer />
           {/* <div className='list'>
             List
           </div> */}
