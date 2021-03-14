@@ -84,6 +84,14 @@ body {
   }
 } */
 
+/* CONTENT HISTORY STYLES: */
+.search-history {
+  display: flex;
+}
+.search-history-item {
+  
+}
+
 /* CONTENT STYLES:  */
 #search [type='text']{
   border-radius: 7px;
