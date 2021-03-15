@@ -1,18 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import {Store, state, dispatch} from './Store'
+import StoriesReducer from './StoriesReducer'
+import App from './App'
+import AppNew from './AppNew'
 import * as serviceWorker from './serviceWorker';
 import Store from './Store'
 
 ReactDOM.render(
   <React.StrictMode>
+<<<<<<< HEAD:src/index.tsx
     <Store.Provider value={{
       color: '',
       size: 0
     }}>
       <App />
     </Store.Provider>
+=======
+      <AppNew />
+>>>>>>> notypescript:src/NewApp/index copy.js
   </React.StrictMode>,
   document.getElementById('root')
 );

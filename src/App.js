@@ -1,7 +1,7 @@
 import React, {Component, useCallback, useState} from 'react';
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './App.css'
+//import './css/app.css'
 import Text from './Text'
 import SearchForm from './Search'
 import List from './List'
@@ -15,7 +15,7 @@ import {Stories, StoriesState, StoriesAction, StoreType} from './types'
 
 const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?query="
 
-const getSumComments = (stories: Stories) => {
+const getSumComments = (stories) => {
   console.log("C")
   console.log("Calculated comments: ", stories.reduce((acc, story) => acc + story.num_comments , 0))
   return stories.reduce((acc, story) => acc + story.num_comments , 0)
@@ -48,7 +48,7 @@ export const App = (): JSX.Element => {
   let [search, setSearch] = useSemiPersistentState(initialSearch)
   //let [sumComments, setSumComments] = useState(0)
 
-  function useSemiPersistentState(initialSearch: string): [string, (setSearch: string) => void] {
+  function useSemiPersistentState(initialSearch) {
     console.log("semipersistent state was fired! localStorage('search') is: ", localStorage.getItem('search'))
     let [search, setSearch] = useState(localStorage.getItem('search')||initialSearch)
 
@@ -63,9 +63,9 @@ export const App = (): JSX.Element => {
   let [nested, setNested] = useState(nestedObj)
 
   const storiesReducer = (
-    state: StoriesState, 
-    action: StoriesAction
-  ): any => {
+    state, 
+    action
+  ) => {
     switch (action.type) {
       case "STORIES_FETCH_INIT": {
         console.log("FETCH INIT FIRED, state.search is: ", search)
@@ -175,13 +175,13 @@ const handleFetchStories = React.useCallback(() => {
     }, []
   )
 
-  const handleSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchInput = (event) => {
     console.log("New search term: ", event.target.value)
     setSearch(event.target.value)
     console.log("This.state.search: ", search)
   }
 
-  const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSearchSubmit = (event) => {
     event.preventDefault()
     setUrl(`${API_ENDPOINT}${search}`)
     console.log("URL after setURL: ", url)
@@ -198,17 +198,14 @@ const handleFetchStories = React.useCallback(() => {
           <p>Please wait... The application is loading...</p>
         ) : ( 
           <div>
-            {/* <Navigation>
-            </Navigation> */}
-            <Text/>
-            <Provider>
-              <TempContextConsumer/>
-            </Provider>
+            <Navigation>
               <SearchForm search={search} labelName='Label Name' name='search' type='text' id='search' handleSearchInput={handleSearchInput}
-                handleSearchSubmit={handleSearchSubmit} />
+                handleSearchSubmit={handleSearchSubmit}>
+                <Text/>
+              </SearchForm>
+            </Navigation>
             <p>Total comments for all stories: {stories.sumComments}</p>
             {/* <Grid/> */}
-
             <List stories={stories.data} search={search} removeStory={removeStory} nested={nested}/>
             <Footer/>
           </div>

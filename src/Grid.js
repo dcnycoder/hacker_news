@@ -1,4 +1,4 @@
-import './css/grid.css'
+//import './css/grid.css'
 import React from 'react'
 import {Row, Col, Container} from 'react-bootstrap'
 

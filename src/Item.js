@@ -2,12 +2,13 @@ import React from 'react'
 import {Card, CardTitle, CardSubtitle, CardText, CardBody, CardImg, Button} from 'reactstrap'
 import {ListGroup} from 'react-bootstrap'
 import {Story, ItemProps} from './types'
+import "./css/list.css"
 
 //WORKED: IN PLACE DESTRUCTURING:
 //const Item = ({title, url, author, num_comments, points, objectID, removeStory}) => {
 //DIDN'T WORK: 
 //const Item = ({title, url, author, num_comments, points, objectID}: Story, {removeStory}: ItemProps) => {
-const Item = ({story, removeStory}: ItemProps) => {
+const Item = ({story, removeStory}) => {
   let {title, url, author, num_comments, points, objectID} = story
   // console.log("Title: ", title)
   // console.log("dismissProject: ", removeStory)
