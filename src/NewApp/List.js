@@ -15,7 +15,7 @@ const List = ({children}) => {
           <ol className='stories'>
             {stories.map(story => 
             <li>
-              <a href={story.url}>{story.title}</a>
+              <a href={story.url} target="_blank">{story.title}</a>
             </li>)}
           </ol>
         }

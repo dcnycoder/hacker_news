@@ -6,7 +6,13 @@ const SearchHistory = () => {
 
   if (state.searchHistory) {
     return <div className="search-history">
-    
+      {
+        state.searchHistory.forEach(searchItem=>{
+          return <button>
+            {searchItem.value}
+          </button>
+        })
+      }
     </div>
   }
   else return

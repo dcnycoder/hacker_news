@@ -11,11 +11,15 @@ const Search = () => {
       payload: event.target.value
     })
   }
-  
+
   const onSearchSubmit = (event) => {
     event.preventDefault()
     dispatch({
       type: "SET_URL",
+      payload: state.search
+    })
+    dispatch({
+      type: "ADD_TO_HISTORY",
       payload: state.search
     })
   }

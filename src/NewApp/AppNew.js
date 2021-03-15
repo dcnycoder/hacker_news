@@ -1,7 +1,7 @@
 import '../css/app.css'
 import React from 'react'
 import Store from './Store'
-import StoriesReducer from '../StoriesReducer'
+import StoriesReducer from './StoriesReducer'
 import axios from 'axios'
 import Navigation from './Navigation'
 import Footer from './Footer'
@@ -29,7 +29,7 @@ const AppNew = () => {
   React.useEffect(()=> {
     dispatch({type: "STORIES_FETCH_INIT"})
     console.log("State after stories_fetch_init: ", state)
-    setTimeout(() => {
+    //setTimeout(() => {
       axios.get(state.url)
       .then((response) => {
         //console.log("Got the stories: ", response.data.hits)
@@ -46,7 +46,7 @@ const AppNew = () => {
       .catch((error) => {
         console.error(error)
       })
-    }, 3000)
+    //}, 1000)
 
   }, [state.url]) //on URL change
   console.log("isLoading, isError: ", state.isLoading, state.isError)
