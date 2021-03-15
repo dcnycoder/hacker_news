@@ -20,7 +20,6 @@ const StoriesReducer = (state, action) => {
     }
     case "ADD_TO_HISTORY": {
       if (action.payload in state.searchHistory) {
-        console.log('item located in history')
         let newHistory = {...state.searchHistory}
         newHistory[action.payload] += 1
         return {...state, searchHistory: newHistory}

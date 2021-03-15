@@ -3,6 +3,7 @@ import React from 'react'
 import Store from './Store'
 import StoriesReducer from './StoriesReducer'
 import axios from 'axios'
+import SearchHistory from './SearchHistory'
 import Navigation from './Navigation'
 import Footer from './Footer'
 import Search from './Search'
@@ -57,6 +58,7 @@ const AppNew = () => {
       }}>
         <div className='app'>
           <Navigation />
+          <SearchHistory />
           <List>
             <Search />
           </List>

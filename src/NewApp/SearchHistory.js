@@ -7,10 +7,15 @@ const SearchHistory = () => {
   if (state.searchHistory) {
     return <div className="search-history">
       {
-        state.searchHistory.forEach(searchItem=>{
-          return <button>
-            {searchItem.value}
-          </button>
+        // state.searchHistory.forEach(searchItem=>{
+        //   return <button>
+        //     {searchItem.value}
+        //   </button>
+        // })
+        Object.keys(state.searchHistory).map(item => {
+          return <div>
+            {item}
+          </div>
         })
       }
     </div>
