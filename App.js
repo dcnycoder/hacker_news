@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Text from './Text'
 import SearchForm from './Search'
 import List from './List'
-//import Navigation from './Navigation
+import Navigation from './Navigation'
 import Footer from './Footer'
 import TempContextConsumer from './TempContextConsumer'
 import Grid from './Grid'
@@ -21,12 +21,12 @@ const getSumComments = (stories) => {
   return stories.reduce((acc, story) => acc + story.num_comments , 0)
 }
 
-const sampleContext: StoreType = {
+const sampleContext = {
     color: 'red',
     size: 11
 }
 
-export const App = (): JSX.Element => {
+export const App = () => {
   //const AppContextConsumer = AppContext.Consumer
 
   const message = "HACKER NEWS"
