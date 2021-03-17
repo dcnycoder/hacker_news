@@ -74,7 +74,9 @@ const AppNew = () => {
     return (
       <Store.Provider value={{
         state,
-        dispatch
+        dispatch,
+        onSearchChange, 
+        onSearchSubmit
       }}>
         <div className='app'>
           <Navigation />
