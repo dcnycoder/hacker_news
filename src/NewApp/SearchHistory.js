@@ -2,20 +2,18 @@ import React from 'react'
 import Store from './Store'
 
 const SearchHistory = () => {
-  const {state, dispatch} = React.useContext(Store)
+  const {state, dispatch, onSearchChange, onSearchSubmit} = React.useContext(Store)
 
   if (Object.keys(state.searchHistory).length>0 ){
     return <div className="search-history">
       Recent searches: 
       {
-        // state.searchHistory.forEach(searchItem=>{
-        //   return <button>
-        //     {searchItem.value}
-        //   </button>
-        // })
-
         Object.keys(state.searchHistory).map(item => {
-          return <button className='search-history-item'>
+          return <button className='search-history-item' onSubmit={() => {
+            onSearchChange();
+            onSearchSubmit();
+            } 
+          }>
             {item}
           </button>
         })
