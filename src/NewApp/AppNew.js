@@ -24,6 +24,29 @@ const AppNew = () => {
     searchHistory: {}
   }
 
+    const onSearchChange = (event) => {
+    console.log(event.target.value);
+    dispatch({
+      type: "CHANGE_SEARCH",
+      payload: event.target.value
+    })
+  }
+
+  const onSearchSubmit = (event) => {
+    event.preventDefault()
+    const searchText = document.getElementById("search-text");
+    searchText.value = ''
+
+    dispatch({
+      type: "SET_URL",
+      payload: state.search
+    })
+    dispatch({
+      type: "ADD_TO_HISTORY",
+      payload: state.search
+    })
+  }
+
   let [state, dispatch] = React.useReducer(StoriesReducer, initialState)
   React.useEffect(()=> {
     dispatch({type: "STORIES_FETCH_INIT"})

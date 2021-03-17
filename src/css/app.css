@@ -90,7 +90,7 @@ body {
   display: flex;
   padding-left: 40px;
   align-items: center;
-  wrap: wrap;
+  flex-wrap: wrap;
 }
 .search-history-item {
   margin: 10px 5px 10px 5px;
