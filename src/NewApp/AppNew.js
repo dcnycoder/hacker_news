@@ -34,16 +34,19 @@ const AppNew = () => {
 
   const onSearchSubmit = (event) => {
     event.preventDefault()
+    console.log('event.target.class: ', event.target.type)
+    const searchTerm = (event.target.type==='button')? event.target.value : state.search
     const searchText = document.getElementById("search-text");
     searchText.value = ''
 
+
     dispatch({
       type: "SET_URL",
-      payload: state.search
+      payload: searchTerm
     })
     dispatch({
       type: "ADD_TO_HISTORY",
-      payload: state.search
+      payload: searchTerm
     })
   }
 

@@ -10,8 +10,7 @@ const SearchHistory = () => {
       {
         Object.keys(state.searchHistory).map(item => {
           return <button className='search-history-item' 
-          value={item} onClick={(event) => {
-              onSearchChange(event);
+          value={item} type='button' onClick={(event) => {
               onSearchSubmit(event);
           }}>
             {item}
