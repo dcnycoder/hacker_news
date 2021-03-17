@@ -25,6 +25,8 @@ const AppNew = () => {
   }
 
     const onSearchChange = (event) => {
+    console.log('event.target: ', event.target);
+    console.log('event.target.children: ', event.target.value);
     console.log(event.target.value);
     dispatch({
       type: "CHANGE_SEARCH",
