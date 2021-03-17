@@ -7,11 +7,9 @@ import SearchHistory from './SearchHistory'
 import Navigation from './Navigation'
 import Footer from './Footer'
 import Search from './Search'
-// import SearchNew from './SearchNew'
 import List from './List'
 import {Container, Row, Col} from 'react-bootstrap'
 import { render } from '@testing-library/react'
-//import { render } from '@testing-library/react'
 
 const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?query="
 //export let Store = React.createContext()
@@ -33,14 +31,13 @@ const AppNew = () => {
     //setTimeout(() => {
       axios.get(state.url)
       .then((response) => {
-        //console.log("Got the stories: ", response.data.hits)
         console.log("Filtered stories: ", response.data.hits.filter(story=>{
           return story.title!=null
         }));
         dispatch({
           type: "STORIES_FETCH_SUCCESS",
           payload: response.data.hits.filter(story=>{
-            return story.title != null && story.url!=null
+            return story.title!="" && story.url!=null
           })
         })
       })
@@ -62,11 +59,7 @@ const AppNew = () => {
           <List>
             <Search />
           </List>
-
           <Footer />
-          {/* <div className='list'>
-            List
-          </div> */}
         </div>
       </Store.Provider>
     )

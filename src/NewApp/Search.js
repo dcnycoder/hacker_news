@@ -3,7 +3,7 @@ import Store from './Store'
 
 
 const Search = () => {
-  const {state, dispatch, search} = React.useContext(Store)
+  const {state, dispatch} = React.useContext(Store)
   const onSearchChange = (event) => {
     console.log(event.target.value);
     dispatch({
