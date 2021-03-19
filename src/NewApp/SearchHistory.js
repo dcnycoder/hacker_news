@@ -19,7 +19,7 @@ const SearchHistory = () => {
       }
     </div>
   }
-  else return null
+  else return <div className="search-history"></div>
 
 }
 
