@@ -8,13 +8,12 @@ import Navigation from './Navigation'
 import Footer from './Footer'
 import Search from './Search'
 import List from './List'
-import {Container, Row, Col} from 'react-bootstrap'
-import { render } from '@testing-library/react'
+// import {Container, Row, Col} from 'react-bootstrap'
+// import { render } from '@testing-library/react'
 
 const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?query="
-//export let Store = React.createContext()
 
-const AppNew = () => {
+const App = () => {
   let initialState = {
     stories: [],
     search: 'React',
@@ -63,7 +62,7 @@ const AppNew = () => {
         dispatch({
           type: "STORIES_FETCH_SUCCESS",
           payload: response.data.hits.filter(story=>{
-            return story.title!="" && story.url!=null
+            return story.title!=="" && story.url!=null
           })
         })
       })
@@ -94,7 +93,7 @@ const AppNew = () => {
   }
 
 
-  // OLD RETURN
+// OLD RETURN
 //   return (
 //       <Store.Provider value = {{
 //           state,
@@ -118,4 +117,4 @@ const AppNew = () => {
 //     )
 // }
 
-export default AppNew
+export default App
