@@ -24,3 +24,8 @@ yarn-error.log*
 
 #user defined
 test.js
+/OLD
+.gitignore
+tsconfig.json
+yarn.lock
+

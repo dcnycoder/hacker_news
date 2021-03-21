@@ -1,7 +1,6 @@
 body {
   margin: 0px;
   height: 100vh;
-  /* font: verdana; */
   font-family: helvetica,arial,courier;
 }
 
@@ -112,6 +111,7 @@ body {
 /* CONTENT STYLES:  */
 #search [type='text']{
   border-radius: 7px;
+  margin-bottom: 10px;
 }
 #search button {
   border-radius: 7px;

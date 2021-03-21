@@ -1,6 +1,5 @@
 import React from 'react'
-import {Nav, Navbar, NavDropdown, Form, FormControl, Button} from 'react-bootstrap'
-import SearchNew from './SearchNew'
+//import {Nav, Navbar, NavDropdown, Form, FormControl, Button} from 'react-bootstrap'
 
 
 function Navigation({children}) {

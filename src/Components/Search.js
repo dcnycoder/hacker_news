@@ -3,7 +3,7 @@ import Store from './Store'
 
 
 const Search = () => {
-  const {state, dispatch, onSearchChange, onSearchSubmit} = React.useContext(Store)
+  const {onSearchChange, onSearchSubmit} = React.useContext(Store)
 
   return <form id='search' onSubmit={onSearchSubmit}>
     {/* <label>Search news: </label> */}
