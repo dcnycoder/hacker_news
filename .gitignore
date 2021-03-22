@@ -24,8 +24,9 @@ yarn-error.log*
 
 #user defined
 test.js
-OLD
+/OLD
 .gitignore
 tsconfig.json
 yarn.lock
+src/Components/011221.code-workspace
 
